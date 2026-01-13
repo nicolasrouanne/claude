@@ -6,7 +6,7 @@ This folder contains documentation, guides, and notes related to Claude and Clau
 
 | Document | Description |
 | -------- | ----------- |
-| [Idle Notification Sound](./guides/idle-notification-sound.md) | How to set up audio notifications when Claude Code is waiting for input |
+| [Audio Notifications](./guides/idle-notification-sound.md) | How to set up audio notifications for Claude Code events (task completion, idle, permissions) |
 
 ## Structure
 

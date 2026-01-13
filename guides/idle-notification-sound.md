@@ -1,6 +1,6 @@
-# Set Up Audio Notifications for Claude Code Idle State
+# Set Up Audio Notifications for Claude Code
 
-This guide explains how to configure Claude Code to play a sound when it's waiting for user input.
+This guide explains how to configure Claude Code to play sounds for various events: when a task completes, when waiting for user input, or when permissions are needed.
 
 ## Prerequisites
 
@@ -12,13 +12,41 @@ This guide explains how to configure Claude Code to play a sound when it's waiti
 
 Claude Code supports **hooks** that execute custom commands in response to events. The `Notification` hook with the `idle_prompt` matcher triggers when Claude has been waiting for user input for more than 60 seconds.
 
-| Event Type | Trigger |
-| ---------- | ------- |
-| `idle_prompt` | Claude is waiting for input (after 60s idle) |
-| `permission_prompt` | Claude needs permission approval |
-| `auth_success` | Authentication completed |
+| Hook Type | Trigger |
+| --------- | ------- |
+| `Stop` | Claude has finished a task |
+| `Notification` (`idle_prompt`) | Claude is waiting for input (after 60s idle) |
+| `Notification` (`permission_prompt`) | Claude needs permission approval |
+| `Notification` (`auth_success`) | Authentication completed |
 
-## Step-by-step Guide
+## Stop Hook: Sound When Task Completes
+
+The `Stop` hook triggers every time Claude finishes processing a request. This is useful to get notified when a long-running task is done.
+
+### Configuration
+
+Edit `~/.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Submarine.aiff &"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+> **Note:** The `&` runs the command in the background. It's optional for short sounds but ensures the hook completes quickly regardless of sound duration.
+
+## Idle Notification: Sound When Waiting for Input
 
 ### 1. Choose a Sound
 
