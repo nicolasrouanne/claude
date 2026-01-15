@@ -8,7 +8,18 @@
       "Bash(brew services stop:*)",
       "Bash(bundle exec rspec:*)",
       "Bash(bundle exec rubocop:*)",
-      "Bash(bundle install:*)"
+      "Bash(bundle install:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(test:*)",
+      "Bash(try --help:*)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)"
     ]
   },
   "hooks": {
