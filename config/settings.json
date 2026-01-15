@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Applications/Claude.app/Contents/Resources/app/bin/claude mcp:*)",
+      "Bash(bin/rails generate:*)",
+      "Bash(bin/rails runner:*)",
+      "Bash(brew install:*)",
+      "Bash(brew services stop:*)",
+      "Bash(bundle exec rspec:*)",
+      "Bash(bundle exec rubocop:*)",
+      "Bash(bundle install:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Submarine.aiff &"
+          }
+        ]
+      }
+    ]
+  }
+}
