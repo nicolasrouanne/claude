@@ -28,8 +28,11 @@
       "Bash(git rebase:*)",
       "Bash(git cherry-pick:*)",
       "Bash(git stash:*)",
+      "Bash(git mv:*)",
+      "Bash(git worktree:*)",
 
       "Bash(gh pr:*)",
+      "Bash(gh gist:*)",
       "Bash(gh issue:*)",
       "Bash(gh repo:*)",
       "Bash(gh api:*)",
@@ -45,6 +48,12 @@
       "Bash(stat:*)",
       "Bash(md5:*)",
       "Bash(shasum:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
 
       "Bash(bin/rails generate:*)",
       "Bash(bin/rails runner:*)",
@@ -94,12 +103,27 @@
       "Bash(brew update)",
       "Bash(brew upgrade:*)",
       "Bash(brew services list)",
+      "Bash(brew services start:*)",
+      "Bash(brew services stop:*)",
 
       "Bash(test:*)",
       "Bash(try:*)",
       "Bash(afplay:*)",
 
-      "WebSearch"
+      "WebSearch",
+
+      "mcp__notion__notion-search",
+      "mcp__notion__notion-fetch",
+      "mcp__notion__notion-create-pages",
+      "mcp__notion__notion-update-page",
+      "mcp__notion__notion-move-pages",
+      "mcp__notion__notion-duplicate-page",
+      "mcp__notion__notion-create-database",
+      "mcp__notion__notion-update-database",
+      "mcp__notion__notion-create-comment",
+      "mcp__notion__notion-get-comments",
+      "mcp__notion__notion-get-teams",
+      "mcp__notion__notion-get-users"
     ]
   },
   "hooks": {
