@@ -15,23 +15,27 @@ Write blog articles based on context and publish them to the Notion Articles dat
    - A topic/description passed as argument
 
 2. **Ask the user** using AskUserQuestion:
-   - Language: EN or FR
    - Title suggestion (propose one based on context, let them edit)
    - Any specific angle or focus they want
 
-3. **Write the article** following the tone guidelines below
+3. **Write the article in English first** following the tone guidelines below
 
-4. **Publish to Notion** using the Articles database:
+4. **Publish English version to Notion** using the Articles database:
    - Database ID: `ac7ebcbdc95543a288361516f2043e8b`
    - Data Source ID: `410f70e5-33d0-434f-86b2-ef36dd1398d0`
 
-5. **Set properties**:
+5. **Set properties** for English version:
    - Title: the article title
-   - Language: EN or FR
+   - Language: EN
    - Date: today's date
    - Author: `8aaaff03-f1fc-4020-b3aa-2b6f1e7016e2` (Nicolas)
 
-6. **Ask if user wants a translation** - if yes, create the translated version and link them via the Translation property
+6. **Always translate to French** - create the French version with:
+   - Translated title
+   - Language: FR
+   - Same date and author
+
+7. **Link both articles** via the Translation property (both directions)
 
 ## Tone Guidelines
 
@@ -84,14 +88,22 @@ If they provide a file: `/notion-article ./notes/meeting-notes.md` - transform t
 
 If they provide a topic: `/notion-article "How we set up our CI/CD pipeline"` - write about that topic, asking clarifying questions as needed.
 
-## Translation Linking
+## Translation Workflow
 
-When creating a translation:
-1. Create the translated article first
-2. Get its page ID from the response
-3. Update both articles' Translation property to link to each other
+Since we always create both versions:
+
+1. Create the English article first, note its page ID
+2. Create the French article, note its page ID
+3. Update English article's Translation property to link to French
+4. Update French article's Translation property to link to English
 
 Use the relation property format:
 ```json
 {"Translation": "https://www.notion.so/[page-id]"}
 ```
+
+## Important
+
+- **Always write English first** - this is the source language
+- **Always translate to French** - no need to ask, just do it
+- **Always link both articles** - bidirectional Translation property
