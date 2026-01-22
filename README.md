@@ -22,6 +22,7 @@ Custom slash commands available in Claude Code:
 ```
 claude/
 ├── README.md          # This file - index of all documentation
+├── CLAUDE.md          # Global instructions for all Claude Code sessions
 ├── .claude/
 │   └── skills/        # Custom Claude Code skills
 │       └── promote-permissions/
@@ -33,9 +34,13 @@ claude/
 
 ## Quick Setup
 
-The root `~/.claude/settings.json` is symlinked to this repo:
+The following files are symlinked from `~/.claude/` to this repo:
 
 ```bash
+# Global instructions (loaded in every session)
+ln -sf ~/dev/claude/CLAUDE.md ~/.claude/CLAUDE.md
+
+# User-level settings
 ln -sf ~/dev/claude/config/settings.json ~/.claude/settings.json
 ```
 
