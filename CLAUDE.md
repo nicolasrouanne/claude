@@ -18,4 +18,5 @@ When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) 
 
 ## Git Preferences
 
-When merging PRs, always use merge commits (`gh pr merge --merge`), not squash or rebase.
+- Never push directly to main. Always create a branch and PR, even for small changes.
+- When merging PRs, always use merge commits (`gh pr merge --merge`), not squash or rebase.
