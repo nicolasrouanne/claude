@@ -15,3 +15,7 @@ After making changes to versioned Claude configs, ask: "Would you like to commit
 ## GitHub Formatting
 
 When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) for permalinks to the same repository. GitHub auto-unfurls same-repo links, so markdown format like `[text](url)` creates unwanted code previews. Just paste the URL directly.
+
+## Git Preferences
+
+When merging PRs, always use merge commits (`gh pr merge --merge`), not squash or rebase.
