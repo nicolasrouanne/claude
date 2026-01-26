@@ -30,12 +30,17 @@
       "Bash(git stash:*)",
       "Bash(git mv:*)",
       "Bash(git worktree:*)",
+      "Bash(git am:*)",
+      "Bash(git format-patch:*)",
+      "Bash(git lfs fetch:*)",
+      "Bash(git lfs pull:*)",
 
       "Bash(gh pr:*)",
       "Bash(gh gist:*)",
       "Bash(gh issue:*)",
       "Bash(gh repo:*)",
       "Bash(gh api:*)",
+      "Bash(gh run:*)",
 
       "Bash(ls:*)",
       "Bash(tree:*)",
@@ -54,10 +59,14 @@
       "Bash(grep:*)",
       "Bash(cat:*)",
       "Bash(find:*)",
+      "Bash(lsof:*)",
+      "Bash(open -a:*)",
 
       "Bash(bin/rails generate:*)",
       "Bash(bin/rails runner:*)",
+      "Bash(bin/rails db:migrate:*)",
       "Bash(bundle exec rspec:*)",
+      "Bash(bundle exec puma:*)",
       "Bash(bundle exec rubocop:*)",
       "Bash(bundle install:*)",
       "Bash(bundle:*)",
@@ -78,6 +87,7 @@
       "Bash(npm list:*)",
       "Bash(npm outdated:*)",
       "Bash(npm version:*)",
+      "Bash(npm search:*)",
 
       "Bash(yarn install:*)",
       "Bash(yarn test:*)",
@@ -87,6 +97,7 @@
       "Bash(yarn start:*)",
       "Bash(yarn list:*)",
       "Bash(yarn outdated:*)",
+      "Bash(yarn serve:*)",
 
       "Bash(pnpm install:*)",
       "Bash(pnpm test:*)",
@@ -105,6 +116,17 @@
       "Bash(brew services list)",
       "Bash(brew services start:*)",
       "Bash(brew services stop:*)",
+
+      "Bash(docker run:*)",
+      "Bash(docker stop:*)",
+      "Bash(docker rm:*)",
+      "Bash(docker logs:*)",
+
+      "Bash(nvm use:*)",
+      "Bash(nvm ls:*)",
+      "Bash(nvm list:*)",
+      "Bash(nvm alias:*)",
+      "Bash(nvm current:*)",
 
       "Bash(test:*)",
       "Bash(try:*)",
