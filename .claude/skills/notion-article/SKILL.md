@@ -40,19 +40,19 @@ Write blog articles based on context and publish them to the Notion Articles dat
 ## Tone Guidelines
 
 **DO:**
-- Write in first person ("I discovered...", "J'ai trouvé...")
-- Use short, punchy sentences
-- Include concrete examples and code snippets
-- Be conversational, like explaining to a colleague
-- Share genuine insights and "aha moments"
-- Acknowledge limitations and mistakes honestly
+- Write in first person, conversational ("I wanted to...", "J'ai essayé...")
+- State the goal clearly in the opening paragraph
+- Share genuine insights and what you learned
+- Include code snippets and concrete examples
+- Be honest about limitations and what didn't work
+- Keep paragraphs short (2-4 sentences)
 
 **DON'T:**
-- Use corporate buzzwords ("revolutionize", "game-changer", "leverage")
-- Write grandiloquent titles ("The Future of X is Here")
-- Be overly formal or distant
-- Add unnecessary disclaimers
-- Pad with filler content
+- Write clickbait titles ("The Future of X is Here", "X Will Change Everything")
+- Use rhetorical questions as dramatic hooks ("Can AI really...?")
+- Be grandiose about simple things - match the tone to the scope
+- Pad with filler or unnecessary backstory
+- Use buzzwords ("game-changer", "revolutionize", "leverage", "unlock")
 
 ## Article Structure
 
@@ -61,24 +61,26 @@ Write blog articles based on context and publish them to the Notion Articles dat
 **Date:** [Today's date in format: January 22, 2026 / 22 janvier 2026]
 ---
 
-## [Opening hook - a question, confession, or surprising statement]
+[Opening: what you wanted to achieve and why, in 1-2 short paragraphs]
 
-[1-2 paragraphs setting up the problem or context]
+## [Setup / How it works]
 
-## [Main content sections]
+[Code snippets, steps, or explanation]
 
-[Use ## for major sections, ### for subsections]
-[Include code blocks with ``` when relevant]
-[Keep paragraphs short - 2-4 sentences max]
+## [What works]
 
-## [Practical takeaways or what I learned]
+[Results, with concrete examples]
 
-[Summarize key points]
-[Be honest about limitations]
+## [What doesn't work / Limitations]
 
----
-*[Optional closing note about how it was written/context]*
+[Be honest about gaps]
+
+## [Practical use / Takeaways]
+
+[When is this actually useful, what you'd do differently]
 ```
+
+Keep the scope honest. A small hack is a small hack - don't frame it as a breakthrough.
 
 ## Example Prompts for Context
 
