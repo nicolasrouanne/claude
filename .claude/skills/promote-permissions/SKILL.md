@@ -1,69 +1,107 @@
 ---
 name: promote-permissions
-description: Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then optionally create a PR
+description: Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then create a PR
 ---
 
 # Promote Permissions
 
-Promote useful permissions from ephemeral `settings.local.json` files to the versioned `settings.json`.
+Promote useful permissions from ephemeral `settings.local.json` files to versioned settings (user-level, project-level, or both).
 
 ## Your Task
 
-1. **Detect current directory** and find its `.claude/settings.local.json` if it exists
+1. **Detect current directory** and check if it's a git repo with `.claude/settings.json`
 2. **Read ephemeral permissions** from BOTH:
    - `~/.claude/settings.local.json` (user-level ephemeral)
    - `$CWD/.claude/settings.local.json` (current project ephemeral, if exists)
-3. **Read versioned permissions** from `~/dev/claude/config/settings.json` (the symlink target)
+3. **Read versioned permissions** from:
+   - `~/dev/claude/config/settings.json` (user-level versioned, symlinked to ~/.claude/settings.json)
+   - `$CWD/.claude/settings.json` (project-level versioned, if exists)
 4. **Find new permissions** that exist in local files but not in versioned
-5. **Present each new permission** to the user with context about what it does
-6. **Use AskUserQuestion** to let user select which permissions to promote
-7. **Update** `~/dev/claude/config/settings.json` with approved permissions
-8. **Create a commit** in `~/dev/claude` with a descriptive message
-9. **Ask if user wants a PR** - if yes, create branch and open PR
+5. **Present each permission** with category and **recommended destination** (see below)
+6. **Use AskUserQuestion** to let user select which permissions to promote AND where
+7. **Update** the appropriate settings.json file(s) with approved permissions
+8. **Create commits and PRs** for each repo with changes (see Commit Workflow below)
 
-## Permission Analysis
+## Promotion Destinations
 
-When presenting permissions, categorize them:
+For each permission, recommend where it should go:
 
-- **Safe read-only**: `git status`, `git log`, `ls`, `tree`, `cat`, `head`
-- **Git operations**: `git add`, `git commit`, `git push`, `git checkout`
-- **GitHub CLI**: `gh pr`, `gh issue`, `gh repo`
-- **Build tools**: `npm`, `yarn`, `uv`, `pytest`, `bundle`
-- **MCP tools**: `mcp__*` permissions
-- **WebFetch/WebSearch**: domain-specific web access
-- **Potentially sensitive**: anything with credentials, tokens, or URLs
+### User-Level (`~/dev/claude/config/settings.json`)
+Permissions that are useful across ALL projects:
+- **General git operations**: `git status`, `git log`, `git stash`, `git diff`, `git add`, `git commit`, `git push`
+- **GitHub CLI**: `gh pr`, `gh issue`, `gh repo`, `gh api`
+- **Safe read-only**: `ls`, `tree`, `which`, `pwd`
+- **General dev tools**: `node --version`, `python --version`, `uv --version`
+
+### Project-Level (`$CWD/.claude/settings.json`)
+Permissions specific to THIS project:
+- **Project-specific scripts**: `npm run <script>`, `pnpm <command>`, project Makefile targets
+- **Project build tools**: `uv run pytest`, `uv run ruff`, `eas build` (if specific to project)
+- **Project-specific paths**: commands referencing project directories
+- **MCP tools**: `mcp__*` permissions (usually project-configured)
+- **WebFetch for project APIs**: domains specific to project services
+
+### Both (User + Project)
+Sometimes a permission makes sense in both places:
+- Common tool patterns that you also want versioned with the project for team sharing
+- Example: `Bash(uv run pytest:*)` - useful globally AND should be in project for teammates
 
 ## Output Format
 
 For each permission found, show:
 
 ```
-Permission: Bash(git stash:*)
-Source: ~/.claude/settings.local.json (or current project path)
-Category: Git operation (safe)
-Recommendation: Promote to versioned settings
+Permission: Bash(uv run pytest:*)
+Source: ~/dev/samm/.claude/settings.local.json
+Category: Build tool (test runner)
+Recommendation: BOTH - useful globally + share with project team
 ```
 
-Then ask user to approve with checkboxes (use multiSelect).
+Then use AskUserQuestion with options for each permission:
+- "User settings only"
+- "Project settings only"
+- "Both user and project"
+- "Skip (don't promote)"
+
+Group permissions by recommended destination when presenting.
 
 ## Files to Check
 
 **Always check:**
 - `~/.claude/settings.local.json` (user ephemeral)
-- `$CWD/.claude/settings.local.json` (current directory ephemeral, if exists)
-- `~/dev/claude/config/settings.json` (versioned target)
+- `$CWD/.claude/settings.local.json` (current project ephemeral, if exists)
 
-**Optionally mention** if running from these known project directories:
-- `~/dev/.claude/settings.local.json`
-- `~/dev/samm/.claude/settings.local.json`
-- `~/dev/episto/.claude/settings.local.json`
+**Versioned targets:**
+- `~/dev/claude/config/settings.json` (user-level versioned)
+- `$CWD/.claude/settings.json` (project-level versioned, if exists and is a git repo)
+
+**Known project directories** (mention if CWD matches):
+- `~/dev/samm`
+- `~/dev/episto`
+- `~/dev/claude`
+
+## Commit Workflow
+
+**IMPORTANT: Always create a PR for every repo with changes. Do not ask whether to create PRs.**
+
+### For User-Level Changes (`~/dev/claude`)
+1. Create branch `claude/promote-permissions-YYYY-MM-DD`
+2. Stage and commit changes to `config/settings.json`
+3. Push and create PR
+
+### For Project-Level Changes (`$CWD`)
+1. Create branch `chore/promote-permissions-YYYY-MM-DD`
+2. Stage and commit changes to `.claude/settings.json`
+3. Push and create PR
+
+If promoting to BOTH, create commits and PRs in both repos.
 
 ## Commit Message Format
 
 ```
 chore(claude): promote permissions from local settings
 
-Promoted:
+Promoted to [user/project/both]:
 - Bash(command1:*)
 - Bash(command2:*)
 - WebFetch(domain:example.com)
@@ -71,6 +109,6 @@ Promoted:
 
 ## PR Format
 
-Branch: `claude/promote-permissions-YYYY-MM-DD`
+Branch: `[claude|chore]/promote-permissions-YYYY-MM-DD`
 Title: `chore(claude): promote permissions from local settings`
-Body: List the promoted permissions and their categories
+Body: List the promoted permissions, their categories, and why they were promoted to this location
