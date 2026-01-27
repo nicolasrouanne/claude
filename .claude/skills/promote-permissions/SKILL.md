@@ -1,6 +1,6 @@
 ---
 name: promote-permissions
-description: Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then optionally create a PR
+description: Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then create a PR
 ---
 
 # Promote Permissions
@@ -20,7 +20,7 @@ Promote useful permissions from ephemeral `settings.local.json` files to version
 5. **Present each permission** with category and **recommended destination** (see below)
 6. **Use AskUserQuestion** to let user select which permissions to promote AND where
 7. **Update** the appropriate settings.json file(s) with approved permissions
-8. **Create commits** as needed (see Commit Workflow below)
+8. **Create commits and PRs** for each repo with changes (see Commit Workflow below)
 
 ## Promotion Destinations
 
@@ -82,15 +82,19 @@ Group permissions by recommended destination when presenting.
 
 ## Commit Workflow
 
+**IMPORTANT: Always create a PR for every repo with changes. Do not ask whether to create PRs.**
+
 ### For User-Level Changes (`~/dev/claude`)
-1. Stage and commit changes to `config/settings.json`
-2. Ask if user wants a PR (branch: `claude/promote-permissions-YYYY-MM-DD`)
+1. Create branch `claude/promote-permissions-YYYY-MM-DD`
+2. Stage and commit changes to `config/settings.json`
+3. Push and create PR
 
 ### For Project-Level Changes (`$CWD`)
-1. Stage and commit changes to `.claude/settings.json` in the current repo
-2. Ask if user wants a PR for this repo too
+1. Create branch `chore/promote-permissions-YYYY-MM-DD`
+2. Stage and commit changes to `.claude/settings.json`
+3. Push and create PR
 
-If promoting to BOTH, create commits in both repos.
+If promoting to BOTH, create commits and PRs in both repos.
 
 ## Commit Message Format
 
@@ -105,6 +109,6 @@ Promoted to [user/project/both]:
 
 ## PR Format
 
-Branch: `claude/promote-permissions-YYYY-MM-DD`
+Branch: `[claude|chore]/promote-permissions-YYYY-MM-DD`
 Title: `chore(claude): promote permissions from local settings`
 Body: List the promoted permissions, their categories, and why they were promoted to this location
