@@ -15,6 +15,8 @@ Custom slash commands available in Claude Code:
 
 | Skill | Description |
 | ----- | ----------- |
+| `/notion-article` | Write and publish a blog article to Notion based on conversation context, a file, or a topic |
+| `/pr` | Commit changes, create a branch, push, and open a pull request |
 | `/promote-permissions` | Review ephemeral permissions and promote them to versioned settings, optionally creating a PR |
 
 ## Structure
@@ -25,6 +27,8 @@ claude/
 ├── CLAUDE.md          # Global instructions for all Claude Code sessions
 ├── .claude/
 │   └── skills/        # Custom Claude Code skills
+│       ├── notion-article/
+│       ├── pr/
 │       └── promote-permissions/
 ├── config/            # Configuration files (symlinked from ~/.claude/)
 │   └── settings.json  # User-level Claude settings
