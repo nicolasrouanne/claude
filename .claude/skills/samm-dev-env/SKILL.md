@@ -13,6 +13,13 @@ Options:
 - `api` - Start only the API server (skip mobile)
 - `mobile` - Start only the mobile app (skip API)
 
+## Prerequisites
+
+1. **PostgreSQL 17** installed via Homebrew
+2. **iOS Simulator** with matching Xcode platform version
+   - Check Xcode > Settings > Components for iOS platform downloads
+3. **Development build** installed on simulator (or use `npx expo run:ios` for local build)
+
 ## Instructions
 
 ### 1. Start PostgreSQL (if not running)
@@ -53,12 +60,17 @@ Wait for the server to be ready (check for "Application startup complete" or tes
 
 ### 5. Start Mobile App (unless `api` only)
 
+For local simulator build:
+```bash
+cd ~/dev/samm/mobile
+npx expo run:ios --device "iPhone 17 Pro"
+```
+
+Or if dev client is installed:
 ```bash
 cd ~/dev/samm/mobile
 pnpm ios
 ```
-
-This will connect to the already-booted simulator.
 
 ## Taking Screenshots
 
@@ -76,4 +88,34 @@ brew services stop postgresql@17
 
 # Shutdown simulator
 xcrun simctl shutdown booted
+```
+
+## Symlink Setup
+
+To use this skill in the SAMM project, create a symlink:
+
+```bash
+ln -s ~/dev/claude/.claude/skills/samm-dev-env ~/dev/samm/.claude/skills/samm-dev-env
+```
+
+## Required Permissions
+
+Add to `.claude/settings.json` in the SAMM project:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew services list:*)",
+      "Bash(brew services start:*)",
+      "Bash(brew services stop:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(open -a Simulator)",
+      "Bash(uv run fastapi dev:*)",
+      "Bash(uv run python:*)",
+      "Bash(pnpm ios)",
+      "Bash(npx expo:*)"
+    ]
+  }
+}
 ```
