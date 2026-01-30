@@ -14,8 +14,11 @@ Streamlined workflow to commit, branch, push, and create a PR in one command.
 3. **Identify relevant changes**: Only include files and changes from the current conversation context. Ignore pre-existing uncommitted changes that are unrelated to the current task.
 4. **Determine if there's an associated issue**:
    - Check the conversation context for any GitHub issue references (#123, issue URL, etc.)
-   - If found, note the issue number for the PR body
-   - If not found and changes suggest an issue context, ask the user
+   - If found in conversation, note the issue number for the PR body
+   - If NOT found in conversation, **search recent open issues**: `gh issue list --state open --limit 20` and review titles
+   - If an issue clearly matches the changes, link it automatically (no need to ask)
+   - If unsure about a potential match, ask the user with `AskUserQuestion` listing the candidates
+   - If no issue seems related and you're confident there isn't one, don't link and don't ask
 5. **Create a new branch from main**:
    - If already on `main`, create the branch directly: `git checkout -b <branch-name>`
    - If on a different branch with uncommitted changes, use a **git worktree** to avoid disrupting the current branch:
