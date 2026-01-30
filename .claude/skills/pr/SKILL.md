@@ -27,10 +27,11 @@ Streamlined workflow to commit, branch, push, and create a PR in one command.
      3. `git checkout -b <branch-name>`
      4. Copy only the relevant changed files from the original worktree
    - If on a different branch with no uncommitted changes, `git checkout main && git checkout -b <branch-name>`
-6. **Stage and commit** only the relevant changes with a descriptive commit message following the repo's style
-7. **Push** the branch to origin with `-u` flag
-8. **Create the PR** using `gh pr create --base main`
-9. **Clean up worktree** if one was created: go back to original directory and `git worktree remove ../<repo>-pr-<branch-name>`
+6. **Run linters/tests before committing**: Check the project's CLAUDE.md or README for lint/test commands (e.g. rubocop, eslint, rspec). Run the relevant ones for the changed files. Fix any issues before proceeding.
+7. **Stage and commit** only the relevant changes with a descriptive commit message following the repo's style
+8. **Push** the branch to origin with `-u` flag
+9. **Create the PR** using `gh pr create --base main`
+10. **Clean up worktree** if one was created: go back to original directory and `git worktree remove ../<repo>-pr-<branch-name>`
 
 ## PR Body Format
 
@@ -89,5 +90,6 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 - Never commit sensitive files (.env, credentials, etc.)
 - Stage specific files rather than using `git add -A`
 - **Always target `main`** as the PR base branch
+- **Always rebase on latest `main`** before pushing: `git fetch origin main && git rebase origin/main`
 - **Only include changes from the current conversation context** — do not pull in unrelated uncommitted work
 - Return the PR URL at the end so the user can access it
