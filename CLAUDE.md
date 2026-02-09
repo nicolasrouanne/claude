@@ -3,6 +3,9 @@
 ## Versioning Preference
 
 I maintain a dedicated repository for Claude Code configurations at `~/dev/claude/`.
+- Skills: `~/dev/claude/.claude/skills/` (symlinked from `~/.claude/skills`)
+- Settings: `~/dev/claude/config/settings.json`
+- **Always edit files in `~/dev/claude/`, never in `~/.claude/` directly**
 
 When creating or modifying any of the following, remind me to commit and push to this repo:
 - Settings files (`settings.json`, hooks, permissions)
