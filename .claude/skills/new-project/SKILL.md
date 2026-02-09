@@ -1,11 +1,11 @@
 ---
 name: new-project
-description: Scaffold a new full-stack project with backend (Scalingo) and Next.js frontend (Cloudflare Pages), initialize git/GitHub, and create planning issues.
+description: Scaffold a new full-stack project with backend (Scalingo) and Next.js frontend (Cloudflare Pages), initialize git/GitHub, and plan using GitHub issues.
 ---
 
-# New Project Scaffolder
+# New Project
 
-Create a new full-stack monorepo with `api/` backend deployed on Scalingo and `web/` frontend (Next.js) deployed on Cloudflare Pages.
+Scaffold and bootstrap a new full-stack project. This skill is both the project creator and the foundation for how the project is planned and tracked — using GitHub issues as the planning database.
 
 ## Input Handling
 
@@ -30,6 +30,7 @@ Ask the user using AskUserQuestion:
 ├── api/                        # Backend
 ├── web/                        # Next.js frontend
 ├── docs/                       # Product documentation (empty)
+├── CLAUDE.md                   # Project instructions for Claude Code
 ├── PLAN.md                     # Agent team workflow
 └── README.md
 ```
@@ -42,7 +43,7 @@ Scaffold a minimal FastAPI app with:
 - `uv` as package manager (pyproject.toml, uv.lock)
 - Python 3.12 (.python-version)
 - `Procfile` for Scalingo: `web: PYTHONPATH=. python -m uvicorn api.main:app --host 0.0.0.0 --port $PORT`
-- FastAPI app with CORS middleware and `/health` + `/api/hello` endpoints
+- Minimal FastAPI app entry point with a `/health` endpoint
 - Dev tooling: `ruff` (linter/formatter), `ty` (type checker), `pytest`
 - Standard .gitignore for Python
 
@@ -51,7 +52,7 @@ Scaffold a minimal FastAPI app with:
 Scaffold a minimal NestJS app with:
 - `pnpm` as package manager
 - `Procfile` for Scalingo: `web: node dist/main.js`
-- NestJS app with CORS enabled and `/health` + `/api/hello` endpoints
+- Minimal NestJS app with a `/health` endpoint
 - Dev tooling: `eslint`, `prettier`
 - Standard .gitignore for Node
 
@@ -70,6 +71,11 @@ Scaffold a Next.js 16 app with:
 
 ### 5. Root Files
 
+- **CLAUDE.md**: Project-level instructions including:
+  - Project overview and tech stack
+  - How to run backend and frontend locally
+  - Deployment targets (Scalingo for api/, Cloudflare Pages for web/)
+  - Lint/test commands for each stack
 - **README.md**: Project title, description, tech stack table, quick start commands
 - **PLAN.md**: Agent team workflow with 4 phases:
   1. Discovery (product + devils-advocate)
@@ -85,14 +91,9 @@ Adapt roles and deliverables to the specific project.
 2. `git add -A && git commit -m "feat: scaffold project structure"`
 3. `gh repo create <project-name> --<visibility> --source . --push`
 
-### 7. Create GitHub Issues
+### 7. Plan Using GitHub Issues
 
-Create one issue per planning phase from PLAN.md using `gh issue create`:
-- Phase 1: Discovery - Product research & validation (`planning` label)
-- Phase 2: Design - Detailed specifications (`planning` label)
-- Phase 3a: Build - Backend API (`backend` label)
-- Phase 3b: Build - Frontend UI (`frontend` label)
-- Phase 4: Validate - Testing & deployment (`devops` label)
+Use GitHub issues as the planning database. Create an initial set of issues based on the PLAN.md phases using `gh issue create`. The agent should document its plan, decisions, and progress as GitHub issues — not just at project creation but as an ongoing practice. Issues should be created and updated as the project evolves.
 
 ### 8. Install Dependencies
 
@@ -109,12 +110,13 @@ Print a summary with project location, GitHub repo URL, created issue URLs, and 
 **DO:**
 - Keep the scaffold minimal - just enough to run and deploy
 - Use modern tooling: uv/ruff/ty (Python), pnpm/eslint/prettier (Node/TS)
+- Create a CLAUDE.md so Claude Code understands the project from the start
+- Use GitHub issues as the single source of truth for planning
 - Create the `docs/` directory (empty, ready for specs)
 
 **DON'T:**
-- Don't add business logic beyond hello/health endpoints
+- Don't add business logic - just the bare scaffold
 - Don't deploy anything - just set up the structure
-- Don't create a CLAUDE.md (user will add as needed)
 
 ## Example Usage
 
