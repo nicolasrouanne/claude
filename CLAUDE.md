@@ -24,3 +24,4 @@ When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) 
 - Never push directly to main. Always create a branch and PR, even for small changes.
 - When merging PRs, always use merge commits (`gh pr merge --merge`), not squash or rebase.
 - When already on an unmerged feature branch, use `git worktree` to create a new branch for separate work. This keeps work isolated and avoids mixing changes.
+- **Never merge PRs without explicit user approval.** Always ask before merging, even if CI passes and linting is clean. Validation is not approval.
