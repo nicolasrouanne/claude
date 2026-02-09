@@ -1,9 +1,9 @@
 ---
-name: review-pr
-description: Fetch PR review comments, reply to questions, and implement requested changes. Usage: /review-pr <pr-url-or-number>
+name: review-apply
+description: Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply <pr-url-or-number>
 ---
 
-# Handle PR Review
+# Apply PR Review Feedback
 
 Fetch review comments on a PR, reply to questions, and implement requested code changes.
 
