@@ -1,15 +1,18 @@
 ---
 name: review-apply
-description: Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply <pr-url-or-number>
+description: Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply [pr-url-or-number]
 ---
 
 # Apply PR Review Feedback
 
-Fetch review comments on a PR, reply to questions, and implement requested code changes.
+Fetch review comments on a PR, reply to questions, and implement requested code changes. By default, uses the PR associated with the current branch.
 
 ## Your Task
 
-1. **Parse the PR reference**: If given just a number, use the current repo. Run `gh repo view --json owner,name` to get the current repo's owner and name. If given a full URL, parse out the owner/repo/pr from it.
+1. **Parse the PR reference**:
+   - If no argument provided: Use `gh pr view --json number` to get the PR for the current branch. If no PR exists for the current branch, ask the user to specify a PR.
+   - If given just a number: Use the current repo. Run `gh repo view --json owner,name` to get the current repo's owner and name.
+   - If given a full URL: Parse out the owner/repo/pr from it.
 2. **Fetch the review comments**: Use `gh api repos/{owner}/{repo}/pulls/{pr}/comments` to get all review comments. Parse out the comment ID, file path, body, and diff hunk for each.
 3. **Classify each comment** as one of:
    - **Question**: The reviewer is asking why something was done, requesting clarification, or asking if something is needed. Reply directly on the PR.
@@ -48,5 +51,6 @@ Fetch review comments on a PR, reply to questions, and implement requested code 
 
 ## Usage Examples
 
+- `/review-apply` - Reviews the PR associated with the current branch
 - `/review-apply 35` - Reviews PR #35 in the current repo
 - `/review-apply https://github.com/owner/repo/pull/123` - Reviews a specific PR URL
