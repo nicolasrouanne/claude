@@ -16,7 +16,7 @@ The HTML reports are self-contained and can be viewed in several ways:
 1. **Locally**: Open the HTML file directly in your browser
 2. **GitHub**: View directly on GitHub (it will render the HTML)
 3. **GitHub Pages**: If you enable Pages for this repo, the reports will be accessible at:
-   - `https://[your-username].github.io/claude/insights/report-2026-02-10.html`
+   - `https://nicolasrouanne.github.io/claude/insights/report-2026-02-10.html`
 
 ## Key Insights from Latest Report
 
