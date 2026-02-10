@@ -81,10 +81,25 @@ Parse the argument to determine the action:
    git branch -d <branch-name>
    ```
 
-5. **Report back**:
+5. **Prune all local branches already merged into main**:
+   ```bash
+   # Switch back to main and pull latest
+   git checkout main
+   git pull origin main
+
+   # Prune remote tracking branches that no longer exist
+   git fetch --prune
+
+   # Delete all local branches that have been merged into main (except main itself)
+   git branch --merged main | grep -v '^\*\|main' | xargs -r git branch -d
+   ```
+   Report which branches were pruned. If none, say "No stale branches to clean up."
+
+6. **Report back**:
    ```
    Worktree removed: <path>
    Branch <branch-name>: deleted (merged) / kept (unmerged)
+   Pruned branches: <list of deleted branches, or "none">
    ```
 
 ## Important
