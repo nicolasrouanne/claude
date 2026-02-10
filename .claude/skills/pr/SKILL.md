@@ -1,6 +1,10 @@
 ---
 name: pr
 description: Commit changes, create a branch, push, and open a pull request. If working from an issue, automatically links it with "Closes #X".
+title: /pr
+parent: Skills
+permalink: /skills/pr/
+nav_order: 6
 ---
 
 # Create Pull Request

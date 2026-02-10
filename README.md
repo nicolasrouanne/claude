@@ -1,3 +1,8 @@
+---
+title: Home
+nav_order: 1
+---
+
 # Claude Documentation
 
 This folder contains documentation, guides, and notes related to Claude and Claude Code. It serves as a personal wiki for configuration, workflows, tips, and integrations.

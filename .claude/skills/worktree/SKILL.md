@@ -1,6 +1,10 @@
 ---
 name: worktree
 description: Create or clean up a git worktree for feature work, with permission inheritance. Usage: /worktree <branch-name> or /worktree clean
+title: /worktree
+parent: Skills
+permalink: /skills/worktree/
+nav_order: 10
 ---
 
 # Git Worktree Manager

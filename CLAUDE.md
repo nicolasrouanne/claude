@@ -1,3 +1,8 @@
+---
+title: My CLAUDE.md
+nav_order: 2
+---
+
 # Global Claude Code Instructions
 
 ## Versioning Preference

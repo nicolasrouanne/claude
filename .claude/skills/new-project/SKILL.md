@@ -1,6 +1,10 @@
 ---
 name: new-project
 description: Scaffold a new full-stack project with backend (Scalingo) and Next.js frontend (Cloudflare Pages), initialize git/GitHub, and plan using GitHub issues.
+title: /new-project
+parent: Skills
+permalink: /skills/new-project/
+nav_order: 4
 ---
 
 # New Project

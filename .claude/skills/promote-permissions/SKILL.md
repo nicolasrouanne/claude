@@ -1,6 +1,10 @@
 ---
 name: promote-permissions
 description: Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then create a PR
+title: /promote-permissions
+parent: Skills
+permalink: /skills/promote-permissions/
+nav_order: 7
 ---
 
 # Promote Permissions

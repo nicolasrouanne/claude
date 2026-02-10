@@ -1,6 +1,10 @@
 ---
 name: create-skill
 description: Create a new Claude Code skill based on conversation context, a file, or a description of the skill's purpose.
+title: /create-skill
+parent: Skills
+permalink: /skills/create-skill/
+nav_order: 1
 ---
 
 # Skill Creator

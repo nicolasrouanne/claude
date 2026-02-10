@@ -1,6 +1,10 @@
 ---
 name: notion-article
 description: Write and publish a blog article to Notion based on conversation context, a file, or a topic
+title: /notion-article
+parent: Skills
+permalink: /skills/notion-article/
+nav_order: 5
 ---
 
 # Notion Article Writer
