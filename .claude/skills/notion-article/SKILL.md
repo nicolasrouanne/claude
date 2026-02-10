@@ -1,6 +1,6 @@
 ---
 name: notion-article
-description: Write and publish a blog article to Notion based on conversation context, a file, or a topic
+description: Write and publish a blog article to Notion based on conversation context, a file, or a topic. Optionally cross-post to LinkedIn, Twitter, and Slack.
 title: /notion-article
 parent: Skills
 permalink: /skills/notion-article/
@@ -113,3 +113,9 @@ Use the relation property format:
 - **Always write English first** - this is the source language
 - **Always translate to French** - no need to ask, just do it
 - **Always link both articles** - bidirectional Translation property
+
+---
+
+## Cross-Posting to Social Media
+
+After publishing both Notion articles, invoke the `/cross-post` skill with the English article's Notion URL to offer cross-posting to LinkedIn, Twitter/X, and Slack.
