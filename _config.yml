@@ -1,0 +1,15 @@
+remote_theme: just-the-docs/just-the-docs
+
+title: Claude Code Config
+description: Personal Claude Code configuration — skills, permissions, guides, and insights.
+baseurl: /claude
+
+include:
+  - .claude/skills
+
+exclude:
+  - config/
+  - notes/
+  - .claude/settings.local.json
+  - Gemfile
+  - Gemfile.lock

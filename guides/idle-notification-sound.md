@@ -1,3 +1,8 @@
+---
+title: Audio Notifications
+parent: Guides
+---
+
 # Set Up Audio Notifications for Claude Code
 
 This guide explains how to configure Claude Code to play sounds for various events: when a task completes, when waiting for user input, or when permissions are needed.

@@ -1,3 +1,8 @@
+---
+title: Settings Architecture
+parent: Guides
+---
+
 # Claude Code Settings Architecture
 
 This guide documents the complete Claude Code configuration setup across all projects.

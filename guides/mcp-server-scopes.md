@@ -1,3 +1,8 @@
+---
+title: MCP Server Scopes
+parent: Guides
+---
+
 # MCP Server Scopes in Claude Code
 
 When adding an MCP server with `claude mcp add`, the `--scope` (`-s`) flag determines where the config is stored and where the server is available.

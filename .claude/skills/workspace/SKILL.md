@@ -1,6 +1,10 @@
 ---
 name: workspace
 description: Read open Cursor editor tabs to understand what the user is working on.
+title: /workspace
+parent: Skills
+permalink: /skills/workspace/
+nav_order: 9
 ---
 
 # Load Cursor Context
