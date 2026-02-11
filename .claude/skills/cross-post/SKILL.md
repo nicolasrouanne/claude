@@ -1,6 +1,10 @@
 ---
 name: cross-post
 description: Cross-post content to LinkedIn, Twitter/X, and Slack. Adapts content to each platform's format and constraints.
+title: /cross-post
+parent: Skills
+permalink: /skills/cross-post/
+nav_order: 11
 ---
 
 # Cross-Post to Social Media

@@ -4,12 +4,10 @@ title: Claude Code Config
 description: Personal Claude Code configuration — skills, permissions, guides, and insights.
 baseurl: /claude
 
-include:
-  - .claude/skills
-
 exclude:
   - config/
   - notes/
+  - skills/
   - .claude/settings.local.json
   - Gemfile
   - Gemfile.lock
