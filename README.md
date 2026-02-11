@@ -22,6 +22,7 @@ Custom slash commands available in Claude Code:
 | Skill | Description |
 | ----- | ----------- |
 | [`/create-skill`](./.claude/skills/create-skill/SKILL.md) | Create a new Claude Code skill from conversation context, a file, or a description |
+| [`/cross-post`](./.claude/skills/cross-post/SKILL.md) | Cross-post content to LinkedIn, Twitter/X, and Slack |
 | [`/find-skills`](./.claude/skills/find-skills/SKILL.md) | Discover and install agent skills from the open skills ecosystem |
 | [`/merge`](./.claude/skills/merge/SKILL.md) | Merge a PR (with merge commit), then clean up worktree and prune merged branches |
 | [`/new-project`](./.claude/skills/new-project/SKILL.md) | Scaffold a full-stack project with backend (Scalingo) and Next.js frontend (Cloudflare Pages) |
@@ -29,6 +30,8 @@ Custom slash commands available in Claude Code:
 | [`/pr`](./.claude/skills/pr/SKILL.md) | Commit changes, create a branch, push, and open a pull request |
 | [`/promote-permissions`](./.claude/skills/promote-permissions/SKILL.md) | Review ephemeral permissions and promote approved ones to versioned settings |
 | [`/review-apply`](./.claude/skills/review-apply/SKILL.md) | Apply PR review feedback — reply to questions and implement requested changes |
+| [`/sentry-triage`](./.claude/skills/sentry-triage/SKILL.md) | Triage unresolved Sentry issues, analyze root causes, and prioritize by impact |
+| [`/tmba-process`](./.claude/skills/tmba-process/SKILL.md) | Process a "Tech My Breath Away" meeting: move Notion page and upload video |
 | [`/workspace`](./.claude/skills/workspace/SKILL.md) | Read open Cursor editor tabs to understand what the user is working on |
 | [`/worktree`](./.claude/skills/worktree/SKILL.md) | Create or clean up a git worktree for feature work, with permission inheritance |
 
@@ -47,8 +50,9 @@ claude/
 ├── README.md          # This file - index of all documentation
 ├── CLAUDE.md          # Global instructions for all Claude Code sessions
 ├── .claude/
-│   └── skills/        # Custom Claude Code skills (10 skills)
+│   └── skills/        # Custom Claude Code skills (13 skills)
 │       ├── create-skill/
+│       ├── cross-post/
 │       ├── find-skills/
 │       ├── merge/
 │       ├── new-project/
@@ -56,6 +60,8 @@ claude/
 │       ├── pr/
 │       ├── promote-permissions/
 │       ├── review-apply/
+│       ├── sentry-triage/
+│       ├── tmba-process/
 │       ├── workspace/
 │       └── worktree/
 ├── config/            # Configuration files (symlinked from ~/.claude/)
