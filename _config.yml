@@ -7,7 +7,6 @@ baseurl: /claude
 exclude:
   - config/
   - notes/
-  - skills/
   - .claude/settings.local.json
   - Gemfile
   - Gemfile.lock
