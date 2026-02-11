@@ -140,6 +140,12 @@
       "Bash(test:*)",
       "Bash(try:*)",
       "Bash(afplay:*)",
+      "Bash(env)",
+      "Bash(echo:*)",
+      "Bash(xxd:*)",
+      "Bash(unzip:*)",
+      "Bash(claude auth status:*)",
+      "Bash(tmux list-sessions:*)",
 
       "WebSearch",
 
