@@ -1,6 +1,6 @@
 ---
 name: review-apply
-description: Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply [pr-url-or-number]
+description: "Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply [pr-url-or-number]"
 title: /review-apply
 parent: Skills
 permalink: /skills/review-apply/
