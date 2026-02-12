@@ -18,14 +18,13 @@ Cross-post content to LinkedIn, Twitter/X, and Slack. Can be used standalone or 
    - A file path passed as argument
    - Current conversation context
 
-2. **Ask the user** which platforms to cross-post to using AskUserQuestion with multiSelect:
-   - LinkedIn
-   - Twitter/X
-   - Slack
+2. **Ask the user** using AskUserQuestion (can be combined in a single prompt):
+   - Which platforms to cross-post to (multiSelect): LinkedIn, Twitter/X, Slack
+   - Which language to write the posts in: French, English
 
-   Only proceed with platforms the user selects.
+   Only proceed with platforms the user selects. Write all posts in the selected language.
 
-3. **Generate platform-appropriate content** for each selected platform
+3. **Generate platform-appropriate content** in the selected language for each selected platform
 
 4. **Show the user a preview** of each post before publishing
 
