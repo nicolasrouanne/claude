@@ -1,6 +1,6 @@
 ---
 name: merge
-description: Merge a PR (with merge commit), then clean up worktree and prune merged branches via /worktree clean. Usage: /merge [pr-number]
+description: "Merge a PR (with merge commit), then clean up worktree and prune merged branches via /worktree clean. Usage: /merge [pr-number]"
 title: /merge
 parent: Skills
 permalink: /skills/merge/

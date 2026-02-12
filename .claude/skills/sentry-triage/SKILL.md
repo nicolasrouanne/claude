@@ -1,3 +1,7 @@
+---
+nav_exclude: true
+---
+
 # Sentry Triage
 
 Triage unresolved Sentry issues for any project. Analyze errors, identify root causes, prioritize by impact, and optionally apply fixes or update issue status.
