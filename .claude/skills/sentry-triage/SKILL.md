@@ -82,6 +82,50 @@ If the user asks to act on issues:
 - **Ignore**: Use `mcp__sentry__update_issue` with `status: 'ignored'`
 - **Assign**: Use `mcp__sentry__update_issue` with `assignedTo` parameter
 - **Fix**: Propose and implement code changes in the local codebase, following the project's code standards
+- **Create linked GitHub issue**: Use the Sentry REST API to create a GitHub issue bidirectionally linked to the Sentry issue (see below)
+
+### Step 4b: Create linked GitHub issues (via Sentry GitHub integration)
+
+When creating GitHub issues for Sentry issues, use the **Sentry REST API** (not MCP tools) to create them through the GitHub integration. This creates a bidirectional link between the Sentry issue and the GitHub issue.
+
+**Prerequisites:**
+- Auth token from `~/.sentryclirc`
+- GitHub integration must be configured in Sentry (Settings > Integrations > GitHub)
+- The project's CLAUDE.md should contain the `integrationId` and repo slug (check there first)
+
+**Procedure:**
+
+1. **Read the auth token:**
+   ```bash
+   # Token is in ~/.sentryclirc under [auth] section
+   SENTRY_TOKEN=$(grep '^token=' ~/.sentryclirc | cut -d= -f2)
+   ```
+
+2. **Get the numeric issue ID** (MCP tools use short IDs like `PROJECT-1A`, but the REST API needs numeric IDs):
+   ```bash
+   curl -s -H "Authorization: Bearer $SENTRY_TOKEN" \
+     "https://{regionUrl}/api/0/organizations/{org}/issues/?query={SHORT_ID}&shortIdLookup=1" \
+     | python3 -c "import sys,json; d=json.load(sys.stdin); print(d[0]['id'])"
+   ```
+
+3. **Get the GitHub integration ID** (if not already known from CLAUDE.md):
+   ```bash
+   curl -s -H "Authorization: Bearer $SENTRY_TOKEN" \
+     "https://{regionUrl}/api/0/organizations/{org}/issues/{numericId}/integrations/" \
+     | python3 -c "import sys,json; d=json.load(sys.stdin); [print(f'{i[\"id\"]} - {i[\"provider\"][\"key\"]} - {i[\"name\"]}') for i in d]"
+   ```
+
+4. **Create the linked GitHub issue:**
+   ```bash
+   curl -s -X POST \
+     -H "Authorization: Bearer $SENTRY_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"repo": "{owner}/{repo}", "title": "[{SHORT_ID}] Error title", "description": "**Sentry Issue**: [{SHORT_ID}](https://{org}.sentry.io/issues/{SHORT_ID})\n\n**Impact**: X events, Y users\n\n**Root cause**: ...\n\n**File**: `path/to/file`"}' \
+     "https://{regionUrl}/api/0/organizations/{org}/issues/{numericId}/integrations/{integrationId}/"
+   ```
+   The response includes the created GitHub issue number in the `key` field (e.g., `owner/repo#123`).
+
+5. **Link the PR** to close the GitHub issue by appending `Closes #N` to the PR body.
 
 ### Step 5: Summary report
 
