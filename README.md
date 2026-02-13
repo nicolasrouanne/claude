@@ -15,6 +15,7 @@ This folder contains documentation, guides, and notes related to Claude and Clau
 | [Settings Architecture](./guides/settings-architecture.md) | Complete guide to Claude Code settings hierarchy, permissions, and MCP configuration |
 | [MCP Server Scopes](./guides/mcp-server-scopes.md) | The three MCP server scopes (user, project, local) and when to use each |
 | [Audio Notifications](./guides/idle-notification-sound.md) | How to set up audio notifications for Claude Code events (task completion, idle, permissions) |
+| [MCP Servers](./guides/mcp-servers.md) | Inventory of all configured MCP servers — what they do and how they're scoped |
 
 ## Skills
 
