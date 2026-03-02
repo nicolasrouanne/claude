@@ -1,6 +1,6 @@
 ---
 name: merge
-description: "Merge a PR (with merge commit), then clean up worktree and prune merged branches via /worktree clean. Usage: /merge [pr-number]"
+description: "Merge a PR (with merge commit) and prune merged branches. Usage: /merge [pr-number]"
 title: /merge
 parent: Skills
 permalink: /skills/merge/
@@ -9,7 +9,7 @@ nav_order: 3
 
 # Merge PR and Clean Up
 
-Merge a pull request using a merge commit, then delegate cleanup to `/worktree clean`.
+Merge a pull request using a merge commit, then prune stale local branches.
 
 ## Your Task
 
@@ -30,15 +30,17 @@ Merge a pull request using a merge commit, then delegate cleanup to `/worktree c
    gh pr merge <number> --merge
    ```
    - Always use `--merge` (merge commit), never squash or rebase.
-   - Do NOT pass `--delete-branch` — branch cleanup is handled by `/worktree clean`.
 
-4. **Delegate cleanup to `/worktree clean`**:
-   After a successful merge, invoke the `/worktree clean` skill to:
-   - Remove the worktree (if in one)
-   - Prune all local branches that have been merged into main
+4. **Prune merged branches**:
+   ```bash
+   git checkout main
+   git pull origin main
+   git fetch --prune
+   git branch --merged main | grep -v '^\*\|main' | xargs -r git branch -d
+   ```
+   Report which branches were pruned. If none, say "No stale branches to clean up."
 
 ## Important
 
 - Always use merge commits (`--merge`), per project git preferences.
 - If the merge fails, show the error and do not proceed to cleanup.
-- If not in a worktree, `/worktree clean` will still prune merged branches.

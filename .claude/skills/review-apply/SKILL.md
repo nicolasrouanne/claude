@@ -27,7 +27,7 @@ Fetch review comments on a PR, reply to questions, and implement requested code 
    - **Acknowledgment/approval**: No action needed.
 4. **For questions**: Reply using `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies -f body="..."`. Provide clear, concise technical explanations.
 5. **For change requests**:
-   - Check out the PR branch (use a worktree if the current branch has uncommitted changes)
+   - Check out the PR branch: `git checkout <branch-name>`
    - Implement the requested changes
    - Run linters/tests relevant to the changed files (check CLAUDE.md for commands)
    - Commit with a message like `fix: address review feedback` and push
@@ -44,11 +44,9 @@ Fetch review comments on a PR, reply to questions, and implement requested code 
 
 ## Implementing Changes
 
-- If on a different branch, use `git worktree add` to avoid disrupting current work
 - Only modify files mentioned in the review
 - Run relevant linters/tests before pushing
 - Commit and push to the PR branch
-- Clean up worktree after
 
 ## Important
 
