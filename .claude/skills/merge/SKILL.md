@@ -31,15 +31,6 @@ Merge a pull request using a merge commit, then prune stale local branches.
    ```
    - Always use `--merge` (merge commit), never squash or rebase.
 
-4. **Prune merged branches**:
-   ```bash
-   git checkout main
-   git pull origin main
-   git fetch --prune
-   git branch --merged main | grep -v '^\*\|main' | xargs -r git branch -d
-   ```
-   Report which branches were pruned. If none, say "No stale branches to clean up."
-
 ## Important
 
 - Always use merge commits (`--merge`), per project git preferences.

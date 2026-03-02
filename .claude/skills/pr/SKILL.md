@@ -86,6 +86,5 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 - Never commit sensitive files (.env, credentials, etc.)
 - Stage specific files rather than using `git add -A`
 - **Always target `main`** as the PR base branch
-- **Always rebase on latest `main`** before pushing: `git fetch origin main && git rebase origin/main`
 - **Only include changes from the current conversation context** — do not pull in unrelated uncommitted work
 - Return the PR URL at the end so the user can access it
