@@ -77,22 +77,50 @@ def build_daily(entries, project_client, start_date, end_date):
 
 
 def apply_carry_forward(daily, all_days, all_clients):
-    """Round cumulative per-client totals to nearest 0.5, carry remainder forward."""
-    running = defaultdict(float)
-    assigned = defaultdict(float)
+    """Two-level carry-forward rounding.
+
+    Day-level: determines how many 0.5-slots exist for the day based on total
+    hours worked, so a day can never round to more than its real hours warrant.
+
+    Client-level debt: tracks raw hours accumulated per client minus hours
+    already assigned. Clients with the most uncompensated time get priority
+    for the day's slots, preserving monthly totals without inflating daily ones.
+    """
+    day_running = 0.0
+    day_assigned = 0.0
+    client_running = defaultdict(float)   # raw hours accumulated, never rounded
+    client_assigned = defaultdict(float)  # hours credited so far
     results = {}
 
     for day in all_days:
-        day_alloc = {}
+        day_data = daily[day]
+        total_day_secs = sum(day_data.values())
+
+        # 1. Day-level carry-forward → number of 0.5-slots for today
+        day_running += total_day_secs / DAY_SECS
+        day_new_total = round_half(day_running)
+        day_value = day_new_total - day_assigned
+        day_assigned = day_new_total
+        slots = int(round(day_value * 2))
+
+        # 2. Accumulate raw hours per client (no rounding)
         for c in all_clients:
-            raw_today = daily[day].get(c, 0) / DAY_SECS
-            running[c] += raw_today
-            new_total = round_half(running[c])
-            day_alloc[c] = new_total - assigned[c]
-            assigned[c] = new_total
+            client_running[c] += day_data.get(c, 0) / DAY_SECS
+
+        # 3. Assign slots to clients with highest uncompensated debt
+        day_alloc = {c: 0.0 for c in all_clients}
+        if slots > 0:
+            # Only consider clients who worked today
+            active = [c for c in all_clients if day_data.get(c, 0) > 0]
+            for _ in range(slots):
+                # Pick the active client with the highest debt
+                best = max(active, key=lambda c: client_running[c] - client_assigned[c])
+                day_alloc[best] += 0.5
+                client_assigned[best] += 0.5
+
         results[day] = day_alloc
 
-    return results, running, assigned
+    return results, client_running, client_assigned
 
 
 def print_table(results, all_days, all_clients, running, assigned):
