@@ -1,9 +1,11 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(/Applications/Claude.app/Contents/Resources/app/bin/claude mcp:*)",
       "Bash(claude mcp:*)",
-
       "Bash(git status:*)",
       "Bash(git log:*)",
       "Bash(git diff:*)",
@@ -16,7 +18,6 @@
       "Bash(git ls-files:*)",
       "Bash(git branch:*)",
       "Bash(git tag:*)",
-
       "Bash(git add:*)",
       "Bash(git checkout:*)",
       "Bash(git commit:*)",
@@ -36,7 +37,6 @@
       "Bash(git rm:*)",
       "Bash(git check-ignore:*)",
       "Bash(git clean:*)",
-
       "Bash(gh pr:*)",
       "Bash(gh gist:*)",
       "Bash(gh issue:*)",
@@ -46,7 +46,6 @@
       "Bash(gh workflow:*)",
       "Bash(gh release:*)",
       "Bash(gh search:*)",
-
       "Bash(ls:*)",
       "Bash(tree:*)",
       "Bash(file:*)",
@@ -66,7 +65,6 @@
       "Bash(find:*)",
       "Bash(lsof:*)",
       "Bash(open -a:*)",
-
       "Bash(bin/rails generate:*)",
       "Bash(bin/rails runner:*)",
       "Bash(bin/rails db:migrate:*)",
@@ -75,13 +73,11 @@
       "Bash(bundle exec rubocop:*)",
       "Bash(bundle install:*)",
       "Bash(bundle:*)",
-
       "Bash(uv run:*)",
       "Bash(uv sync:*)",
       "Bash(uv pip:*)",
       "Bash(uv venv:*)",
       "Bash(pytest:*)",
-
       "Bash(npm install:*)",
       "Bash(npm ci:*)",
       "Bash(npm test:*)",
@@ -94,7 +90,6 @@
       "Bash(npm version:*)",
       "Bash(npm search:*)",
       "Bash(npx eslint:*)",
-
       "Bash(yarn install:*)",
       "Bash(yarn test:*)",
       "Bash(yarn build:*)",
@@ -105,7 +100,6 @@
       "Bash(yarn outdated:*)",
       "Bash(yarn add:*)",
       "Bash(yarn serve:*)",
-
       "Bash(pnpm install:*)",
       "Bash(pnpm test:*)",
       "Bash(pnpm build:*)",
@@ -113,7 +107,6 @@
       "Bash(pnpm dev:*)",
       "Bash(pnpm start:*)",
       "Bash(pnpm list:*)",
-
       "Bash(brew install:*)",
       "Bash(brew list:*)",
       "Bash(brew info:*)",
@@ -123,20 +116,17 @@
       "Bash(brew services list)",
       "Bash(brew services start:*)",
       "Bash(brew services stop:*)",
-
       "Bash(docker run:*)",
       "Bash(docker stop:*)",
       "Bash(docker rm:*)",
       "Bash(docker logs:*)",
       "Bash(docker compose exec:*)",
       "Bash(docker compose ps:*)",
-
       "Bash(nvm use:*)",
       "Bash(nvm ls:*)",
       "Bash(nvm list:*)",
       "Bash(nvm alias:*)",
       "Bash(nvm current:*)",
-
       "Bash(test:*)",
       "Bash(try:*)",
       "Bash(afplay:*)",
@@ -146,9 +136,7 @@
       "Bash(unzip:*)",
       "Bash(claude auth status:*)",
       "Bash(tmux list-sessions:*)",
-
       "WebSearch",
-
       "mcp__notion__notion-search",
       "mcp__notion__notion-fetch",
       "mcp__notion__notion-create-pages",
@@ -160,7 +148,29 @@
       "mcp__notion__notion-create-comment",
       "mcp__notion__notion-get-comments",
       "mcp__notion__notion-get-teams",
-      "mcp__notion__notion-get-users"
+      "mcp__notion__notion-get-users",
+      "WebFetch(domain:github.com)",
+      "Bash(node --version:*)",
+      "Bash(npm view:*)",
+      "Bash(gog gmail search:*)",
+      "Bash(gog gmail thread:*)",
+      "Bash(gog gmail send:*)",
+      "Bash(gog gmail labels:*)",
+      "Bash(gog cal events:*)",
+      "Bash(gog cal create:*)",
+      "Bash(gog drive search:*)",
+      "Bash(gog drive ls:*)",
+      "Bash(gog drive download:*)",
+      "Bash(gog contacts search:*)",
+      "Bash(gog tasks list:*)",
+      "Bash(gog tasks lists:*)",
+      "Bash(gog tasks add:*)",
+      "Bash(gog auth list:*)",
+      "Bash(gog auth status:*)",
+      "Bash(gog send:*)",
+      "Bash(gog ls:*)",
+      "Bash(gog search:*)",
+      "Bash(gog download:*)"
     ]
   },
   "hooks": {
@@ -175,8 +185,6 @@
       }
     ]
   },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "teammateMode": "tmux"
+  "teammateMode": "tmux",
+  "model": "sonnet"
 }
