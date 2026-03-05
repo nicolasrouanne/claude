@@ -5,6 +5,13 @@ nav_order: 2
 
 # Global Claude Code Instructions
 
+## About Me
+
+- **Nicolas Rouanne**, CEO de **Qraft** (qraft.tech)
+- Qraft est une équipe d'experts techniques basée à Marseille, spécialisée dans la construction de produits digitaux : applications web et mobile, APIs et intégrations IA
+- Fondée en 2020, l'entreprise accompagne ses clients dans le développement d'applications, la constitution et l'encadrement technique d'équipes de développeurs
+- Email pro : nicolas.rouanne@qraft.tech
+
 ## Versioning Preference
 
 I maintain a dedicated repository for Claude Code configurations at `~/dev/claude/`.
