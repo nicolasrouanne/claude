@@ -1,12 +1,18 @@
 ---
 name: gogcli
 description: CLI for Gmail, Calendar, Drive, Contacts, Tasks, Sheets.
-compatibility: Requires gog CLI (github.com/steipete/gogcli). Set GOG_ACCOUNT=you@gmail.com or use --account flag.
+compatibility: Requires gog CLI (github.com/steipete/gogcli).
 ---
 
 # gogcli
 
 CLI for Google Workspace via [steipete/gogcli](https://github.com/steipete/gogcli).
+
+## Account Configuration
+
+The `gog` CLI is configured for **nicolas.rouanne@qraft.tech** (professional Qraft account).
+
+**Always use `gog` for professional emails** — the MCP Gmail integration (`mcp__claude_ai_Gmail__*`) is connected to the personal `nico.rouanne@gmail.com` account and cannot access Qraft emails.
 
 ## Examples
 

@@ -51,6 +51,15 @@ When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) 
 
 - When promoting or suggesting permissions/security settings, err on the side of restrictive. Never recommend wildcard or broad permissions (e.g., `source:*`, `rm:*`, `kill:*`) without explicit user confirmation.
 
+## Email Accounts & Tools
+
+| Account | Tool | Usage |
+|---------|------|-------|
+| nicolas.rouanne@qraft.tech (pro) | `gog` CLI | Professional/Qraft emails — always prefer this |
+| nico.rouanne@gmail.com (perso) | MCP Gmail (`mcp__claude_ai_Gmail__*`) | Personal emails only |
+
+When asked to search or manage emails, default to `gog` CLI (pro account) unless explicitly asked about the personal account.
+
 ## Tech Stack
 
 - Primary languages: Python (backend), TypeScript (frontend/mobile), Ruby
