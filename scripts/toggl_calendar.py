@@ -108,15 +108,27 @@ def apply_carry_forward(daily, all_days, all_clients):
             client_running[c] += day_data.get(c, 0) / DAY_SECS
 
         # 3. Assign slots to clients with highest uncompensated debt
+        #    Cap each client at 1.0 per day; unused slots carry forward.
         day_alloc = {c: 0.0 for c in all_clients}
+        slots_used = 0
         if slots > 0:
             # Only consider clients who worked today
             active = [c for c in all_clients if day_data.get(c, 0) > 0]
             for _ in range(slots):
+                if not active:
+                    break  # all active clients capped at 1.0
                 # Pick the active client with the highest debt
                 best = max(active, key=lambda c: client_running[c] - client_assigned[c])
                 day_alloc[best] += 0.5
                 client_assigned[best] += 0.5
+                slots_used += 1
+                if day_alloc[best] >= 1.0:
+                    active.remove(best)
+
+        # Roll back day_assigned for unused slots so they carry forward
+        unused = slots - slots_used
+        if unused > 0:
+            day_assigned -= unused * 0.5
 
         results[day] = day_alloc
 
