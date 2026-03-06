@@ -185,31 +185,5 @@
       }
     ]
   },
-  "teammateMode": "tmux",
-  "mcpServers": {
-    "slack-qraft": {
-      "command": "/opt/homebrew/bin/slack-mcp-server",
-      "args": ["-t", "stdio"],
-      "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_QRAFT_BOT_TOKEN}"
-      }
-    },
-    "slack-episto": {
-      "command": "/opt/homebrew/bin/slack-mcp-server",
-      "args": ["-t", "stdio"],
-      "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_EPISTO_BOT_TOKEN}"
-      }
-    },
-    "twitter": {
-      "command": "npx",
-      "args": ["-y", "@enescinar/twitter-mcp"],
-      "env": {
-        "API_KEY": "${TWITTER_API_KEY}",
-        "API_SECRET_KEY": "${TWITTER_API_SECRET_KEY}",
-        "ACCESS_TOKEN": "${TWITTER_ACCESS_TOKEN}",
-        "ACCESS_TOKEN_SECRET": "${TWITTER_ACCESS_TOKEN_SECRET}"
-      }
-    }
-  }
+  "teammateMode": "tmux"
 }
