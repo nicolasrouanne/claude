@@ -7,19 +7,13 @@ parent: Guides
 
 How to set up the Slack MCP server (`slack-mcp-server`) to read and post messages from Claude Code.
 
-## Token types
+## Token type
 
-The server supports three authentication modes:
+**Always use a user token (`xoxp-`).** Do not use bot tokens (`xoxb-`) — they require the bot to be invited to every channel, cannot list channels the bot isn't in, and post as the bot instead of you.
 
-| Token type | Env var | Posts as | Channel access | Expires |
-|------------|---------|---------|----------------|---------|
-| Bot token (`xoxb-`) | `SLACK_MCP_XOXB_TOKEN` | The bot app | Only channels where the bot is invited | No |
-| User token (`xoxp-`) | `SLACK_MCP_XOXP_TOKEN` | You | All channels you're a member of | No |
-| Browser session (`xoxc-`/`xoxd-`) | `SLACK_MCP_XOXC_TOKEN` + `SLACK_MCP_XOXD_TOKEN` | You | All channels you're a member of | Yes (on logout) |
-
-**Recommended: user token (`xoxp-`)**. Posts as you, no need to invite a bot to channels, and doesn't expire.
-
-If both `XOXP` and `XOXB` are set, the server uses the user token and ignores the bot token.
+| Env var | Posts as | Channel access | Expires |
+|---------|---------|----------------|---------|
+| `SLACK_MCP_XOXP_TOKEN` | You | All channels you're a member of | No |
 
 ## Creating a Slack app and getting a user token
 
@@ -133,7 +127,7 @@ Create one Slack app per workspace, each with its own token and MCP server entry
       "command": "/opt/homebrew/bin/slack-mcp-server",
       "args": ["-t", "stdio"],
       "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_EPISTO_BOT_TOKEN}",
+        "SLACK_MCP_XOXP_TOKEN": "${SLACK_EPISTO_USER_TOKEN}",
         "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       }
     }
