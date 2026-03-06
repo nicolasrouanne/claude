@@ -136,6 +136,18 @@
       "Bash(unzip:*)",
       "Bash(claude auth status:*)",
       "Bash(tmux list-sessions:*)",
+      "Bash(python3:*)",
+      "Bash(gh label list:*)",
+      "Bash(gh auth status:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(dig:*)",
+      "Bash(ruby -e:*)",
+      "Bash(gem install:*)",
+      "Bash(xargs:*)",
+      "Bash(yarn remove:*)",
+      "Bash(node -e:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
       "WebSearch",
       "mcp__notion__notion-search",
       "mcp__notion__notion-fetch",
@@ -189,7 +201,10 @@
   "mcpServers": {
     "twitter": {
       "command": "npx",
-      "args": ["-y", "@enescinar/twitter-mcp"],
+      "args": [
+        "-y",
+        "@enescinar/twitter-mcp"
+      ],
       "env": {
         "API_KEY": "${TWITTER_API_KEY}",
         "API_SECRET_KEY": "${TWITTER_API_SECRET_KEY}",
