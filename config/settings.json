@@ -194,6 +194,13 @@
         "SLACK_MCP_XOXB_TOKEN": "${SLACK_QRAFT_BOT_TOKEN}"
       }
     },
+    "slack-episto": {
+      "command": "/opt/homebrew/bin/slack-mcp-server",
+      "args": ["-t", "stdio"],
+      "env": {
+        "SLACK_MCP_XOXB_TOKEN": "${SLACK_EPISTO_BOT_TOKEN}"
+      }
+    },
     "twitter": {
       "command": "npx",
       "args": ["-y", "@enescinar/twitter-mcp"],
