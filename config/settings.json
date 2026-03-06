@@ -185,6 +185,5 @@
       }
     ]
   },
-  "teammateMode": "tmux",
-  "mcpServers": {}
+  "teammateMode": "tmux"
 }
