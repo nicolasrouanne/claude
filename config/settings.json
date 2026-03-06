@@ -179,7 +179,8 @@
       "Bash(gog send:*)",
       "Bash(gog ls:*)",
       "Bash(gog search:*)",
-      "Bash(gog download:*)"
+      "Bash(gog download:*)",
+      "Bash(base64:*)"
     ]
   },
   "hooks": {
