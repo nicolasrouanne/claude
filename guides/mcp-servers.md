@@ -19,7 +19,7 @@ These are available in every project (`-s user`, stored in `~/.claude.json`).
 | **notion** | Stdio | `npx @notionhq/notion-mcp-server` | Notion workspace — search, read/write pages, databases, comments. Powers the `/notion-article` skill. |
 | **fireflies** | HTTP | `https://api.fireflies.ai/mcp` | Meeting transcription — search transcripts, get summaries, list contacts. |
 | **resend** | Stdio | `node ~/dev/mcp/mcp-send-email/build/index.js --key env:RESEND_API_KEY` | Email sending via Resend — send emails, manage contacts, audiences, broadcasts. Custom MCP server. |
-| **slack-qraft** | Stdio | `/opt/homebrew/bin/slack-mcp-server` | Slack Qraft workspace — read channels, send messages, list users. Token: `SLACK_QRAFT_BOT_TOKEN`. |
+| **slack-qraft** | Stdio | `/opt/homebrew/bin/slack-mcp-server` | Slack Qraft workspace — read channels, send messages, list users. Uses user token (`xoxp-`) to post as the authenticated user. Token: `SLACK_QRAFT_USER_TOKEN`. |
 | **slack-episto** | Stdio | `/opt/homebrew/bin/slack-mcp-server` | Slack Episto workspace — read channels, send messages, list users. Token: `SLACK_EPISTO_BOT_TOKEN`. |
 | **chrome-devtools** | Stdio | `npx chrome-devtools-mcp@latest` | Chrome DevTools automation — click, fill, navigate, screenshot, evaluate JS, inspect network/console. |
 | **cloudflare-observability** | HTTP | `https://observability.mcp.cloudflare.com/mcp` | Workers analytics — query logs, inspect keys/values, debug serverless functions. |
