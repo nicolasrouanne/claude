@@ -4,14 +4,16 @@
       "command": "/opt/homebrew/bin/slack-mcp-server",
       "args": ["-t", "stdio"],
       "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_QRAFT_BOT_TOKEN}"
+        "SLACK_MCP_XOXB_TOKEN": "${SLACK_QRAFT_BOT_TOKEN}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       }
     },
     "slack-episto": {
       "command": "/opt/homebrew/bin/slack-mcp-server",
       "args": ["-t", "stdio"],
       "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_EPISTO_BOT_TOKEN}"
+        "SLACK_MCP_XOXB_TOKEN": "${SLACK_EPISTO_BOT_TOKEN}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       }
     },
     "twitter": {
