@@ -4,7 +4,7 @@
       "command": "/opt/homebrew/bin/slack-mcp-server",
       "args": ["-t", "stdio"],
       "env": {
-        "SLACK_MCP_XOXB_TOKEN": "${SLACK_QRAFT_BOT_TOKEN}",
+        "SLACK_MCP_XOXP_TOKEN": "${SLACK_QRAFT_USER_TOKEN}",
         "SLACK_MCP_ADD_MESSAGE_TOOL": "true"
       }
     },
