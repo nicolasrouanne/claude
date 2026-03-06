@@ -12,7 +12,7 @@ Generate a per-day, per-client timesheet for a calendar month (or range).
 
 ## Configuration
 
-- **Script**: `~/dev/claude/scripts/toggl_calendar.py`
+- **Script**: `~/dev/qraft/toggl/toggl_calendar.py`
 - **Toggl API Token**: environment variable `TOGGL_API_TOKEN`
 - **Workspace**: `2584215`
 - **Work day**: 5.5 hours
@@ -28,9 +28,9 @@ Generate a per-day, per-client timesheet for a calendar month (or range).
 
 2. **Run the script** via Bash:
    ```bash
-   python3 ~/dev/claude/scripts/toggl_calendar.py 2026-01
+   python3 ~/dev/qraft/toggl/toggl_calendar.py 2026-01
    # or for a range:
-   python3 ~/dev/claude/scripts/toggl_calendar.py 2026-01 2026-02
+   python3 ~/dev/qraft/toggl/toggl_calendar.py 2026-01 2026-02
    ```
 
 3. **Display the output** as-is — the script formats everything.
