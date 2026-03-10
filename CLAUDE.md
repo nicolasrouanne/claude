@@ -63,5 +63,6 @@ When asked to search or manage emails, default to `gog` CLI (pro account) unless
 ## Tech Stack
 
 - Primary languages: Python (backend), TypeScript (frontend/mobile), Ruby
+- Use `uv` to run Python commands (e.g., `uv run python`, `uv run pytest`, `uv pip install`)
 - Use ruff for Python linting
 - For React Native testing, use Jest (not Vitest)
