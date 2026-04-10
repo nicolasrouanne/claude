@@ -182,6 +182,70 @@
             "command": "afplay /System/Library/Sounds/Submarine.aiff &"
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook stop"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook start"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook pre"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook post"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook notify"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/nicolasrouanne/.claude/bin/claude-status-hook stop"
+          }
+        ]
       }
     ]
   },
