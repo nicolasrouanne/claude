@@ -185,5 +185,6 @@
       }
     ]
   },
+  "voiceEnabled": true,
   "teammateMode": "tmux"
 }
