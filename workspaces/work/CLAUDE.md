@@ -5,3 +5,7 @@ This is the workspace for qraft non-dev tasks:
 - Content editing (notion)
 - File management (gogcli / Google Drive)
 - Client communications
+
+## Notion
+
+Always use the local Notion MCP server (`mcp__notion__API-*` tools) for all Notion operations. Never use the claude.ai Notion connector (`mcp__claude_ai_Notion__*`) — it connects to a different workspace and won't have access to Qraft pages.
