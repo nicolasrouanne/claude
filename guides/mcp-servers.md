@@ -16,7 +16,7 @@ These are available in every project (`-s user`, stored in `~/.claude.json`).
 | Server | Transport | URL / Command | Description |
 |--------|-----------|---------------|-------------|
 | **sentry** | HTTP | `https://mcp.sentry.dev/mcp` | Error monitoring — search issues, view events, analyze with Seer, triage bugs. Powers the `/sentry-triage` skill. |
-| **notion** | Stdio | `npx @notionhq/notion-mcp-server` | Notion workspace — search, read/write pages, databases, comments. Powers the `/notion-article` skill. |
+| ~~**notion**~~ | ~~Stdio~~ | ~~`npx @notionhq/notion-mcp-server`~~ | Removed from user-level. Now configured per-workspace (personal/work/dev) with separate tokens via `${NOTION_TOKEN_PERSONAL}` / `${NOTION_TOKEN_WORK}`. |
 | **fireflies** | HTTP | `https://api.fireflies.ai/mcp` | Meeting transcription — search transcripts, get summaries, list contacts. |
 | **resend** | Stdio | `node ~/dev/mcp/mcp-send-email/build/index.js --key env:RESEND_API_KEY` | Email sending via Resend — send emails, manage contacts, audiences, broadcasts. Custom MCP server. |
 | **slack-qraft** | Stdio | `/opt/homebrew/bin/slack-mcp-server` | Slack Qraft workspace — read channels, send messages, list users. Uses user token (`xoxp-`) to post as the authenticated user. Token: `SLACK_QRAFT_USER_TOKEN`. |
