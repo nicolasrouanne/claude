@@ -11,7 +11,7 @@ Skill pour travailler sur les déclarations CII/CIR sur la plateforme Finalli.
 
 - **URL** : https://app.finalli.com
 - **Credentials** : 1Password, item "Finalli (Self & Innov)" dans vault Qraft
-- **Cabinet** : Finalli (anciennement Self & Innov, anciennement selforiel)
+- **Cabinet** : Finalli (anciennement Self & Innov)
 
 ### Déclarations existantes
 
