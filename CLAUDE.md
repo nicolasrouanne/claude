@@ -51,6 +51,30 @@ When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) 
 
 - When promoting or suggesting permissions/security settings, err on the side of restrictive. Never recommend wildcard or broad permissions (e.g., `source:*`, `rm:*`, `kill:*`) without explicit user confirmation.
 
+## Email Tone & Style
+
+- **Greeting**: "Bonjour," or "Bonsoir," (standalone). "Bonjour/Bonsoir [Prénom]" or "Mme/M. [Nom]" only when I know the person
+- **Body**: Direct, to the point in the first sentence. No preamble ("Je me permets de...", "Je vous écris pour...")
+- **Closing**: Short and warm — "Merci !", "Belle journée,", "Merci et bonne journée,", "À bientôt,"
+- **Sign-off**: Just "Nicolas" (first name only), then signature block
+- **Tone**: Natural, warm, concise. Vouvoiement simple. Uses "!" for friendly emphasis
+- **Length**: 2-5 sentences max. Numbered lists for multiple questions
+- **Never**: "Veuillez agréer", "Cordialement", "Je me permets de...", "N'hésitez pas à me contacter", long preambles
+
+Signature block:
+```
+Nicolas Rouanne
+Tel : 06 37 55 24 28
+```
+
+## Notion
+
+Always use the local Notion MCP server (`mcp__notion__API-*` tools) for all Notion operations. Never use the claude.ai Notion connector (`mcp__claude_ai_Notion__*`) — it connects to a different workspace and won't have access to the correct pages. The local MCP server uses per-workspace tokens from 1Password via chezmoi.
+
+## Memory Management
+
+Memories are an inbox, not permanent storage. When a memory contains stable info (preference, reference, durable feedback), promote it to the appropriate CLAUDE.md rather than leaving it in memory.
+
 ## Email Accounts & Tools
 
 | Account | Tool | Usage |
