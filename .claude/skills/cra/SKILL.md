@@ -19,20 +19,21 @@ Skill chapeau pour le suivi du temps de travail. Orchestre les 3 sources de donn
 
 - **App** : https://app.billi.so | **API** : https://api.billi.so
 - **Credentials** : 1Password, item "Billi Qraft - Agency User" dans vault Qraft
-- **Auth** : Bearer token via OAuth password grant (voir `/billi-cra` pour le détail)
-- **Repo** : https://github.com/billiapp/billi | Local : `~/dev/billi/billi`
-- **Stack** : Rails 8.1 (API) + Next.js 15 (frontend)
+- **Auth** : OAuth password grant (voir `/billi-cra` pour le détail auth)
 
 ### Récupérer les CRA via l'API
 
-```javascript
-// Dans la console Chrome après login sur app.billi.so
-const token = document.cookie.match(/access_token=([^;]+)/)[1];
-const res = await fetch('https://api.billi.so/activity_reports', {
-  headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' }
-});
-const data = await res.json();
-// data.data contient les activity_reports avec: id, month, state, duration, mission, company, freelancer, activities
+```bash
+# 1. Get token
+curl -s -X POST https://api.billi.so/oauth/token \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type":"password","email":"<email>","password":"<password>"}'
+
+# 2. Fetch CRAs
+curl -s https://api.billi.so/activity_reports \
+  -H "Authorization: Bearer <token>" \
+  -H "Accept: application/json"
+# Returns activity_reports with: id, month, state, duration, mission, company, freelancer, activities
 ```
 
 ## Git commits — Extraction jours travaillés
@@ -49,14 +50,6 @@ git -C <repo> log --after="YYYY-01-01" --before="YYYY+1-01-01" --author="Nom" --
 # Détail jour par jour (pour vérification)
 git -C <repo> log --after="YYYY-01-01" --before="YYYY+1-01-01" --author="Nom" --format="%ad" --date=format:"%Y-%m-%d" | sort -u
 ```
-
-Repos principaux : `~/dev/billi/billi`, `~/dev/samm`, `~/dev/episto`
-
-## Missions Billi (dogfooding)
-
-- Mission "CTO" (Nicolas Rouanne) — depuis sept. 2025
-- Mission "Direction technique" (Alexis Nugon) — en cours
-- Note : les CRA dans Billi sont peu remplis, les commits git sont une meilleure source pour le temps des collaborateurs
 
 ## Your Task
 

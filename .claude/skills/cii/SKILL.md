@@ -10,8 +10,8 @@ Skill pour travailler sur les déclarations CII/CIR sur la plateforme Finalli.
 ## Finalli — Plateforme dossier CII/CIR
 
 - **URL** : https://app.finalli.com
-- **Credentials** : 1Password, item "Finalli (Self & Innov)" dans vault Qraft (nicolas@qraft.tech)
-- **Cabinet** : Self & Innov (anciennement selforiel)
+- **Credentials** : 1Password, item "Finalli (Self & Innov)" dans vault Qraft
+- **Cabinet** : Finalli (anciennement Self & Innov, anciennement selforiel)
 
 ### Déclarations existantes
 
@@ -38,51 +38,21 @@ Skill pour travailler sur les déclarations CII/CIR sur la plateforme Finalli.
 | /10 | 9. Propriété intellectuelle | Brevets, licences |
 | /19 | Documents | Pièces justificatives (CV, bulletins, CRA) |
 
-## Description Qraft (pour le dossier)
-
-- **Activité** : "agence tech experte en développement d'applications web et mobile sur mesure"
-- **Équipe R&D** : "4 développeurs, dont deux fondateurs expérimentés (10 et 15 ans) et deux profils plus juniors"
-
 ## Déclaration 2024 Qraft (référence)
 
-Utiliser comme baseline pour les déclarations suivantes :
-
+Utiliser la déclaration CII 2024 Qraft comme baseline pour les déclarations suivantes :
 - **Projet** : P1 Billi, type Innovation (CII)
-- **Personnel** : Lili LIARDET (junior, CDI, sortie 29/03/2024), Adrien Lupo (CDI, entré 01/07/2024)
-- **Temps** : Lili 61j, Adrien 123j, total 184j (0.5j/mois enlevé pour admin)
-- **Dépenses** : Personnel 37 867€ + Amortissements 601€ = 38 468€
-- **CII** : 11 540€ (taux 30%)
+- **Taux CII** : 30%
 - **Méthodologie temps** : CRA dans Billi (dogfooding)
+- **Postes de dépenses** : Personnel, Amortissements (matériel)
+- **Convention** : 0.5j/mois enlevé pour admin par personne
+- Pour les données exactes (personnel, montants), consulter la déclaration sur Finalli directement
 
-## Sources de temps pour le personnel CII
+## Source de temps pour le personnel CII
 
-Le temps déclaré vient de sources différentes selon la personne :
+Le temps déclaré pour le CII est basé sur les **CRA Billi** (`/billi-cra`, `/cra`).
 
-| Source | Pour qui | Commande/Skill |
-|--------|----------|----------------|
-| **Toggl** | Nicolas (CEO) | `/toggl-calendar` — source de vérité |
-| **Git commits** | Collaborateurs sans Toggl (Adrien, Alexis, etc.) | Voir commandes ci-dessous |
-| **Billi CRA** | Tous (déclaratif final) | `/billi-cra` |
-
-### Extraction jours de commits par auteur
-
-```bash
-# Nombre de commits par auteur sur l'année
-git -C ~/dev/billi/billi log --after="YYYY-01-01" --before="YYYY+1-01-01" --format='%aN' | sort | uniq -c | sort -rn
-
-# Jours uniques de travail par auteur
-git -C ~/dev/billi/billi log --after="YYYY-01-01" --before="YYYY+1-01-01" --author="Nom" --format="%ad" --date=format:"%Y-%m-%d" | sort -u | wc -l
-```
-
-### Contributeurs Billi 2025 (référence)
-
-| Auteur | Commits | Jours uniques |
-|--------|---------|---------------|
-| Adrien Lupo | 178 | 34 (jan-mars) |
-| Thomas Demoncy (+Thomas) | 138 | N/A (non déclaré CII) |
-| Thibaud | 120 | N/A (non déclaré CII) |
-| Nicolas Rouanne | 96 | 29 |
-| Alexis Nugon (+Alexis) | 38 | 20 |
+Les commits git peuvent servir de lecture complémentaire pour vérifier la cohérence, mais ne sont pas la source officielle. Utiliser `/cra git` pour cette analyse.
 
 ## Your Task
 
