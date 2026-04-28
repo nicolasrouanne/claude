@@ -58,7 +58,6 @@ Les commits git peuvent servir de lecture complémentaire pour vérifier la coh�
 
 Quand l'utilisateur invoque `/cii` :
 
-1. **Sans argument** : demander sur quelle déclaration travailler (année, entreprise)
-2. **Avec un sujet** (ex: `/cii temps 2025`, `/cii personnel`) : aller directement à la section concernée
-3. Pour le temps du personnel, utiliser la bonne source selon la personne (Toggl pour Nicolas, git commits pour les autres)
-4. Toujours se référer à la déclaration 2024 comme baseline pour le format et les conventions
+1. Demander quelle déclaration (année, entreprise) si pas précisé
+2. Pour le temps du personnel, toujours utiliser Billi CRA (`/billi-cra`). Les autres sources (git, toggl) sont secondaires
+3. Se référer à la déclaration de l'année fiscale passée comme baseline pour le format et les conventions
