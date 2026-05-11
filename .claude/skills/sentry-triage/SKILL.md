@@ -1,5 +1,10 @@
 ---
-nav_exclude: true
+name: sentry-triage
+description: Triage unresolved Sentry issues for any project. Analyze errors, identify root causes, prioritize by impact, and optionally apply fixes or update issue status.
+title: /sentry-triage
+parent: Skills
+permalink: /skills/sentry-triage/
+nav_order: 16
 ---
 
 # Sentry Triage

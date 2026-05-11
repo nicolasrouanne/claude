@@ -14,8 +14,9 @@ This folder contains documentation, guides, and notes related to Claude and Clau
 | -------- | ----------- |
 | [Settings Architecture](./guides/settings-architecture.md) | Complete guide to Claude Code settings hierarchy, permissions, and MCP configuration |
 | [MCP Server Scopes](./guides/mcp-server-scopes.md) | The three MCP server scopes (user, project, local) and when to use each |
-| [Audio Notifications](./guides/idle-notification-sound.md) | How to set up audio notifications for Claude Code events (task completion, idle, permissions) |
 | [MCP Servers](./guides/mcp-servers.md) | Inventory of all configured MCP servers — what they do and how they're scoped |
+| [Slack MCP Setup](./guides/slack-mcp-setup.md) | How to configure the Slack MCP server |
+| [Audio Notifications](./guides/idle-notification-sound.md) | How to set up audio notifications for Claude Code events (task completion, idle, permissions) |
 
 ## Skills
 
@@ -23,10 +24,14 @@ Custom slash commands available in Claude Code:
 
 | Skill | Description |
 | ----- | ----------- |
+| [`/billi-cra`](./.claude/skills/billi-cra/SKILL.md) | Import/export CRAs between Excel and Billi (bidirectional sync of activity reports) |
+| [`/cii`](./.claude/skills/cii/SKILL.md) | Dossier CII/CIR — accès Finalli, données de référence, extraction temps personnel |
+| [`/cra`](./.claude/skills/cra/SKILL.md) | Suivi du temps — réconciliation Toggl, Billi CRA et git commits |
 | [`/create-skill`](./.claude/skills/create-skill/SKILL.md) | Create a new Claude Code skill from conversation context, a file, or a description |
 | [`/cross-post`](./.claude/skills/cross-post/SKILL.md) | Cross-post content to LinkedIn, Twitter/X, and Slack |
 | [`/find-skills`](./.claude/skills/find-skills/SKILL.md) | Discover and install agent skills from the open skills ecosystem |
-| [`/merge`](./.claude/skills/merge/SKILL.md) | Merge a PR (with merge commit), then clean up worktree and prune merged branches |
+| [`/gogcli`](./.claude/skills/gogcli/SKILL.md) | CLI for Gmail, Calendar, Drive, Contacts, Tasks, Sheets |
+| [`/merge`](./.claude/skills/merge/SKILL.md) | Merge a PR (with merge commit), then prune merged branches |
 | [`/new-project`](./.claude/skills/new-project/SKILL.md) | Scaffold a full-stack project with backend (Scalingo) and Next.js frontend (Cloudflare Pages) |
 | [`/notion-article`](./.claude/skills/notion-article/SKILL.md) | Write and publish a blog article to Notion based on conversation context, a file, or a topic |
 | [`/pr`](./.claude/skills/pr/SKILL.md) | Commit changes, create a branch, push, and open a pull request |
@@ -34,8 +39,10 @@ Custom slash commands available in Claude Code:
 | [`/review-apply`](./.claude/skills/review-apply/SKILL.md) | Apply PR review feedback — reply to questions and implement requested changes |
 | [`/sentry-triage`](./.claude/skills/sentry-triage/SKILL.md) | Triage unresolved Sentry issues, analyze root causes, and prioritize by impact |
 | [`/tmba-process`](./.claude/skills/tmba-process/SKILL.md) | Process a "Tech My Breath Away" meeting: move Notion page and upload video |
+| [`/toggl-calendar`](./.claude/skills/toggl-calendar/SKILL.md) | Per-day, per-client timesheet calendar from Toggl, with anomaly cleanup |
+| [`/transcribe`](./.claude/skills/transcribe/SKILL.md) | Transcribe audio files using whisper-cpp locally |
+| [`/update-knowledge`](./.claude/skills/update-knowledge/SKILL.md) | Update `.claude/knowledge/` with architectural context and design rationale |
 | [`/workspace`](./.claude/skills/workspace/SKILL.md) | Read open Cursor editor tabs to understand what the user is working on |
-| [`/worktree`](./.claude/skills/worktree/SKILL.md) | Create or clean up a git worktree for feature work, with permission inheritance |
 
 ## Insights Reports
 
@@ -52,10 +59,14 @@ claude/
 ├── README.md          # This file - index of all documentation
 ├── CLAUDE.md          # Global instructions for all Claude Code sessions
 ├── .claude/
-│   └── skills/        # Custom Claude Code skills (13 skills)
+│   └── skills/        # Custom Claude Code skills (19 skills)
+│       ├── billi-cra/
+│       ├── cii/
+│       ├── cra/
 │       ├── create-skill/
 │       ├── cross-post/
 │       ├── find-skills/
+│       ├── gogcli/
 │       ├── merge/
 │       ├── new-project/
 │       ├── notion-article/
@@ -64,8 +75,10 @@ claude/
 │       ├── review-apply/
 │       ├── sentry-triage/
 │       ├── tmba-process/
-│       ├── workspace/
-│       └── worktree/
+│       ├── toggl-calendar/
+│       ├── transcribe/
+│       ├── update-knowledge/
+│       └── workspace/
 ├── config/            # Configuration files (symlinked from ~/.claude/)
 │   └── settings.json  # User-level Claude settings
 ├── guides/            # Step-by-step tutorials and how-tos

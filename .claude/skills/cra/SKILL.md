@@ -1,6 +1,10 @@
 ---
 name: cra
 description: "Suivi du temps : réconciliation Toggl, Billi CRA et git commits. Vue d'ensemble et détection d'écarts entre les sources."
+title: /cra
+parent: Skills
+permalink: /skills/cra/
+nav_order: 14
 ---
 
 # CRA — Suivi du temps
