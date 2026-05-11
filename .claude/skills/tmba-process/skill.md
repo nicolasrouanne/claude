@@ -1,6 +1,10 @@
 ---
 name: tmba-process
 description: Process a "Tech My Breath Away" meeting: move the Fireflies-created Notion page to the Talks database, and upload the video to Google Drive.
+title: /tmba-process
+parent: Skills
+permalink: /skills/tmba-process/
+nav_order: 17
 ---
 
 # Tech My Breath Away - Post-Meeting Processor

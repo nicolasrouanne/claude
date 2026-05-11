@@ -1,6 +1,10 @@
 ---
 name: cii
 description: "Dossier CII/CIR : accès Finalli, données de référence, extraction temps personnel pour les déclarations de crédit d'impôt innovation."
+title: /cii
+parent: Skills
+permalink: /skills/cii/
+nav_order: 13
 ---
 
 # CII / CIR — Dossier Crédit d'Impôt Innovation

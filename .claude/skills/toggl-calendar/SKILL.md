@@ -4,6 +4,7 @@ description: "Per-day, per-client timesheet calendar from Toggl. Shows work days
 title: /toggl-calendar
 parent: Skills
 permalink: /skills/toggl-calendar/
+nav_order: 18
 ---
 
 # Toggl Calendar

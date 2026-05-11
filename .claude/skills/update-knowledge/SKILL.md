@@ -2,6 +2,9 @@
 name: update-knowledge
 description: Update .claude/knowledge/ files with architectural context and design rationale learned during the current session.
 title: /update-knowledge
+parent: Skills
+permalink: /skills/update-knowledge/
+nav_order: 20
 ---
 
 <!-- Based on https://blog.junsuzuki.xyz/blog/beyond-claude-md-repo-scoped-knowledge-layer -->

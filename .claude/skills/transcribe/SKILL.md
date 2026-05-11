@@ -1,6 +1,10 @@
 ---
 name: transcribe
 description: Transcribe audio files using whisper-cpp (whisper-cli) with automatic format conversion.
+title: /transcribe
+parent: Skills
+permalink: /skills/transcribe/
+nav_order: 19
 ---
 
 # Transcribe Audio

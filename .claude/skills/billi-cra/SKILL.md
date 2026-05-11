@@ -1,6 +1,10 @@
 ---
 name: billi-cra
 description: Import CRAs from an Excel file into Billi, or export CRAs from Billi to Excel. Bidirectional sync of activity reports.
+title: /billi-cra
+parent: Skills
+permalink: /skills/billi-cra/
+nav_order: 12
 ---
 
 # billi-cra

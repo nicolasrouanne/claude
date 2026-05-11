@@ -2,6 +2,10 @@
 name: gogcli
 description: CLI for Gmail, Calendar, Drive, Contacts, Tasks, Sheets.
 compatibility: Requires gog CLI (github.com/steipete/gogcli).
+title: /gogcli
+parent: Skills
+permalink: /skills/gogcli/
+nav_order: 15
 ---
 
 # gogcli
