@@ -65,7 +65,7 @@ def render_table(skills: list[Skill], link: Callable[[Skill], str]) -> str:
 def replace_between_markers(text: str, replacement: str) -> str:
     """Return `text` with the content between START_MARKER and END_MARKER replaced."""
     pattern = rf"({re.escape(START_MARKER)}).*?({re.escape(END_MARKER)})"
-    return re.sub(pattern, rf"\1\n{replacement}\n\2", text, flags=re.DOTALL)
+    return re.sub(pattern, rf"\1\n\n{replacement}\n\n\2", text, flags=re.DOTALL)
 
 
 def main() -> int:
