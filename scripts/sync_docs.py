@@ -28,8 +28,8 @@ def read_frontmatter_field(text: str, key: str) -> str:
     block = re.match(r"---\n(.*?)\n---", text, re.DOTALL)
     if not block:
         return ""
-    line = re.search(rf'^{key}:\s*"?(.*?)"?\s*$', block.group(1), re.MULTILINE)
-    return line.group(1) if line else ""
+    line = re.search(rf'^{key}:\s*(["\']?)(.*?)\1\s*$', block.group(1), re.MULTILINE)
+    return line.group(2) if line else ""
 
 
 def find_skill_file(skill_dir: Path) -> Path:
