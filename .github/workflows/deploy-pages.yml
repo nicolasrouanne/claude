@@ -23,9 +23,12 @@ jobs:
           mkdir -p skills
           for dir in .claude/skills/*/; do
             name=$(basename "$dir")
-            if [ -f "$dir/SKILL.md" ]; then
-              cp "$dir/SKILL.md" "skills/${name}.md"
+            src=$(find "$dir" -maxdepth 1 -iname 'SKILL.md' -print -quit)
+            if [ -z "$src" ]; then
+              echo "::error::no SKILL.md found in $dir"
+              exit 1
             fi
+            cp "$src" "skills/${name}.md"
           done
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1

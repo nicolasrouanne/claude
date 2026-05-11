@@ -1,0 +1,19 @@
+name: Check skill docs in sync
+on:
+  pull_request:
+    paths:
+      - ".claude/skills/**"
+      - "README.md"
+      - "skills.md"
+      - "scripts/sync_docs.py"
+      - ".github/workflows/check-docs.yml"
+  push:
+    branches: ["main"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify README.md and skills.md match .claude/skills/
+        run: python3 scripts/sync_docs.py --check

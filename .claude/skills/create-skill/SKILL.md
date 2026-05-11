@@ -31,9 +31,11 @@ Create new Claude Code skills from context, descriptions, or examples.
 
 4. **Generate the SKILL.md** following the structure below
 
-5. **Write the file** to the appropriate location
+5. **Write the file** to the appropriate location. Filename MUST be `SKILL.md` (uppercase) — the GitHub Pages deploy looks for that exact name.
 
-6. **Remind the user** to commit changes to the appropriate repo
+6. **Sync the docs** if this is a user-level skill in `~/dev/claude/`: run `python3 scripts/sync_docs.py` to regenerate the skill tables in `README.md` and `skills.md`.
+
+7. **Remind the user** to commit the new skill and the regenerated tables together — CI rejects PRs where the tables drift from the filesystem.
 
 ## Skill File Structure
 
@@ -41,6 +43,10 @@ Create new Claude Code skills from context, descriptions, or examples.
 ---
 name: skill-name
 description: One sentence describing what this skill does.
+# Jekyll nav (only needed for user-level skills published at nicolasrouanne.github.io/claude):
+title: /skill-name
+parent: Skills
+permalink: /skills/skill-name/
 ---
 
 # Skill Title
