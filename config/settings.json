@@ -170,7 +170,23 @@
       "Bash(gog send:*)",
       "Bash(gog ls:*)",
       "Bash(gog search:*)",
-      "Bash(gog download:*)"
+      "Bash(gog download:*)",
+      "Bash(python3:*)",
+      "Bash(xargs:*)",
+      "Bash(jq:*)",
+      "Bash(dig:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vitest:*)",
+      "Bash(chezmoi diff:*)",
+      "Bash(chezmoi apply:*)",
+      "Bash(gh auth status:*)",
+      "Bash(op item get:*)",
+      "Bash(op item list:*)",
+      "mcp__sentry__find_organizations",
+      "mcp__sentry__find_projects",
+      "mcp__sentry__search_events",
+      "mcp__sentry__search_issues",
+      "mcp__sentry__get_issue_details"
     ]
   },
   "hooks": {
