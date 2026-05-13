@@ -27,10 +27,6 @@ When creating or modifying any of the following, remind me to commit and push to
 
 After making changes to versioned Claude configs, ask: "Would you like to commit and push these changes to your claude repo?"
 
-## GitHub Formatting
-
-When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) for permalinks to the same repository. GitHub auto-unfurls same-repo links, so markdown format like `[text](url)` creates unwanted code previews. Just paste the URL directly.
-
 ## Git Preferences
 
 - Never push directly to main. Always create a branch and PR, even for small changes.
@@ -51,21 +47,9 @@ When posting comments to GitHub issues/PRs, use plain URLs (not markdown links) 
 
 - When promoting or suggesting permissions/security settings, err on the side of restrictive. Never recommend wildcard or broad permissions (e.g., `source:*`, `rm:*`, `kill:*`) without explicit user confirmation.
 
-## Email Tone & Style
+## Writing Style
 
-- **Greeting**: "Bonjour," or "Bonsoir," (standalone). "Bonjour/Bonsoir [Prénom]" or "Mme/M. [Nom]" only when I know the person
-- **Body**: Direct, to the point in the first sentence. No preamble ("Je me permets de...", "Je vous écris pour...")
-- **Closing**: Short and warm — "Merci !", "Belle journée,", "Merci et bonne journée,", "À bientôt,"
-- **Sign-off**: Just "Nicolas" (first name only), then signature block
-- **Tone**: Natural, warm, concise. Vouvoiement simple. Uses "!" for friendly emphasis
-- **Length**: 2-5 sentences max. Numbered lists for multiple questions
-- **Never**: "Veuillez agréer", "Cordialement", "Je me permets de...", "N'hésitez pas à me contacter", long preambles
-
-Signature block:
-```
-Nicolas Rouanne
-Tel : 06 37 55 24 28
-```
+See `.claude/knowledge/writing-style.md` for the canonical voice (universal) and per-channel formatting (Slack, email, Notion, GitHub). Apply it when drafting any message.
 
 ## Notion
 
