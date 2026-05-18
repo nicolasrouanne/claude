@@ -9,113 +9,52 @@ nav_order: 5
 
 # Notion Article Writer
 
-Write blog articles based on context and publish them to the Notion Articles database.
+Publish a Notion article based on conversation context, a file, or a topic. This skill owns the **publishing mechanics**; the tone and structure live in `.claude/knowledge/writing-style.md` (universal voice + "Notion / long-form docs" section) — read it before drafting.
 
-## Your Task
+## Destinations
 
-1. **Gather context** from one of these sources:
-   - Current conversation (default if no argument provided)
-   - A file path passed as argument
-   - A topic/description passed as argument
+| Destination | Parent | Languages | Used for |
+|---|---|---|---|
+| **Articles database** | `ac7ebcbdc95543a288361516f2043e8b` (data source `410f70e5-33d0-434f-86b2-ef36dd1398d0`) | EN + FR, linked via `Translation` | External-facing posts (qraft.tech blog, cross-post to LinkedIn / X / Slack) |
+| **Tech subpage** | `189218ed56d78019b206d49417bafa31` (page `Tech` in qrafttech) | FR only | Internal write-ups, TBMA decks |
 
-2. **Ask the user** using AskUserQuestion:
-   - Title suggestion (propose one based on context, let them edit)
-   - Any specific angle or focus they want
+Ask with AskUserQuestion if the destination isn't obvious. Default to **Tech subpage** for internal infra / tooling / process; default to **Articles database** when the user mentions blog, publication, LinkedIn, or X.
 
-3. **Write the article in English first** following the tone guidelines below
+## Workflow
 
-4. **Publish English version to Notion** using the Articles database:
-   - Database ID: `ac7ebcbdc95543a288361516f2043e8b`
-   - Data Source ID: `410f70e5-33d0-434f-86b2-ef36dd1398d0`
+1. Gather context from the conversation, a file path, or a topic argument.
+2. Ask the user: destination (if not obvious), title (propose one, let them edit), angle.
+3. Read `.claude/knowledge/writing-style.md` and apply it.
+4. Draft and publish per destination (below).
 
-5. **Set properties** for English version:
-   - Title: the article title
-   - Language: EN
-   - Date: today's date
-   - Author: `8aaaff03-f1fc-4020-b3aa-2b6f1e7016e2` (Nicolas)
+### Articles database
 
-6. **Always translate to French** - create the French version with:
-   - Translated title
-   - Language: FR
-   - Same date and author
+Write English first, then French, then link both. Properties for each language version:
 
-7. **Link both articles** via the Translation property (both directions)
+| Property | Value |
+|---|---|
+| Title | the article title (translated for FR) |
+| Language | `EN` or `FR` |
+| Date | today |
+| Author | `8aaaff03-f1fc-4020-b3aa-2b6f1e7016e2` (Nicolas) |
+| Translation | URL of the sibling-language page |
 
-## Tone Guidelines
+Set both `Translation` relations after both pages exist:
 
-**DO:**
-- Write in first person, conversational ("I wanted to...", "J'ai essayé...")
-- State the goal clearly in the opening paragraph
-- Share genuine insights and what you learned
-- Include code snippets and concrete examples
-- Be honest about limitations and what didn't work
-- Keep paragraphs short (2-4 sentences)
-
-**DON'T:**
-- Write clickbait titles ("The Future of X is Here", "X Will Change Everything")
-- Use rhetorical questions as dramatic hooks ("Can AI really...?")
-- Be grandiose about simple things - match the tone to the scope
-- Pad with filler or unnecessary backstory
-- Use buzzwords ("game-changer", "revolutionize", "leverage", "unlock")
-
-## Article Structure
-
-```markdown
-**Author:** Nicolas Rouanne
-**Date:** [Today's date in format: January 22, 2026 / 22 janvier 2026]
----
-
-[Opening: what you wanted to achieve and why, in 1-2 short paragraphs]
-
-## [Setup / How it works]
-
-[Code snippets, steps, or explanation]
-
-## [What works]
-
-[Results, with concrete examples]
-
-## [What doesn't work / Limitations]
-
-[Be honest about gaps]
-
-## [Practical use / Takeaways]
-
-[When is this actually useful, what you'd do differently]
-```
-
-Keep the scope honest. A small hack is a small hack - don't frame it as a breakthrough.
-
-## Example Prompts for Context
-
-If the user says `/notion-article` with no arguments, summarize the current conversation into an article.
-
-If they provide a file: `/notion-article ./notes/meeting-notes.md` - transform those notes into a polished article.
-
-If they provide a topic: `/notion-article "How we set up our CI/CD pipeline"` - write about that topic, asking clarifying questions as needed.
-
-## Translation Workflow
-
-Since we always create both versions:
-
-1. Create the English article first, note its page ID
-2. Create the French article, note its page ID
-3. Update English article's Translation property to link to French
-4. Update French article's Translation property to link to English
-
-Use the relation property format:
 ```json
 {"Translation": "https://www.notion.so/[page-id]"}
 ```
 
-## Important
+### Tech subpage
 
-- **Always write English first** - this is the source language
-- **Always translate to French** - no need to ask, just do it
-- **Always link both articles** - bidirectional Translation property
+FR only. Plain Notion page (no database properties). Parent = `189218ed56d78019b206d49417bafa31`. Optional icon emoji aligned with the topic.
 
----
+## Argument forms
 
-## Cross-Posting to Social Media
+- `/notion-article` — summarize the current conversation into an article.
+- `/notion-article ./notes/meeting-notes.md` — transform those notes.
+- `/notion-article "topic description"` — write about that topic, ask clarifying questions if needed.
 
-After publishing both Notion articles, invoke the `/cross-post` skill with the English article's Notion URL to offer cross-posting to LinkedIn, Twitter/X, and Slack.
+## Cross-posting
+
+After publishing an **Articles-database** post, invoke `/cross-post` with the English page URL to offer LinkedIn / X / Slack cross-posting. Tech subpages are internal — do not cross-post.
