@@ -53,7 +53,27 @@ More formal than Slack. Vouvoiement simple, no emoji in body.
 
 ### Notion / long-form docs
 
-To be filled in when patterns emerge. Default to universal-voice principles with markdown headings and structured sections.
+Covers blog posts (external) and technical write-ups (internal) alike — same register. The universal-voice principles still apply; what follows is the long-form layer on top.
+
+**The shape that works:**
+
+- **Short opener, no preamble.** For change/migration posts, a two-line `Avant : … / Après : …` followed by a single line pointing to the macro issue or PR is enough. For other posts, one or two short paragraphs stating the goal. No "Dans cet article…", no "Format : 10 minutes…".
+- **Plain numbered sections** (`## 1. …`, `## 2. …`). Each section ends with relevant refs on a single trailing line: `→ #1212, PR #1208.`
+- **At least one real code block per section** — HCL, YAML, bash, kubectl/curl verification, etc. Snippets from the actual code/PRs/scripts, not paraphrased examples.
+- **Inline doc links throughout** — provider docs, CLI repos, RFC pages, internal Slite docs. A consolidated "Tous les liens" / "All links" section at the end is fine but doesn't replace inline links.
+- **Honest tail section** (`## Ce qui reste` / `## What's still pending`) listing limitations and open items. No triumphant wrap-up after it.
+
+**Avoid in long-form:**
+
+- Clickbait titles or "X will change everything" framings.
+- Opening `🎯` pitch callouts or closing `💬` punchline callouts — they read as overwritten.
+- Grandiose constructions: "L'équation, c'est :", "C'est ce qui ferme la boucle", "déterministe et autonome", "tuer le rituel", "Si X demande Y, elle est incomplète".
+- Acte 1 / Acte 2 / Acte 3 structure. Two existing TBMAs use it, but it doesn't generalize — copying it lands as theatrical.
+- Long preambles, multi-paragraph framing, restated stakes.
+- Tool comparison tables unless the comparison itself is the point of the article.
+- Buzzwords: "game-changer", "revolutionize", "leverage", "unlock".
+
+The universal voice (direct first sentence, share reasoning, vulnerable closing, semantic emoji) still applies — just without the Slack-style narrative arc.
 
 ### GitHub PR descriptions, issues, and comments
 
