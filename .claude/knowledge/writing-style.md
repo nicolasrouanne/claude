@@ -1,3 +1,10 @@
+---
+title: Writing Style
+parent: Knowledge
+permalink: /knowledge/writing-style/
+nav_order: 1
+---
+
 # Writing Style
 
 Nicolas's voice across written communication. The **voice** (tone, structure, posture) is the same everywhere; only the **formatting** changes per channel.

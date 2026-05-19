@@ -30,6 +30,13 @@ jobs:
             fi
             cp "$src" "skills/${name}.md"
           done
+      - name: Copy knowledge pages for Jekyll
+        run: |
+          mkdir -p knowledge
+          for src in .claude/knowledge/*.md; do
+            [ -e "$src" ] || continue
+            cp "$src" "knowledge/$(basename "$src")"
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/jekyll-build-pages@v1
         with:
