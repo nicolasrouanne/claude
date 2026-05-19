@@ -7,6 +7,25 @@
       "env": {
         "NOTION_TOKEN": "${NOTION_TOKEN_WORK}"
       }
+    },
+    "qonto": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "mcp[cli]",
+        "--with", "requests",
+        "mcp",
+        "run",
+        "/Users/nicolasrouanne/dev/mcp/qonto-mcp-server/qonto_mcp/server.py",
+        "--transport", "stdio"
+      ],
+      "env": {
+        "QONTO_API_KEY": "${QONTO_API_KEY}",
+        "QONTO_ORGANIZATION_ID": "${QONTO_ORGANIZATION_ID}",
+        "QONTO_THIRDPARTY_HOST": "https://thirdparty.qonto.com",
+        "PYTHONPATH": "/Users/nicolasrouanne/dev/mcp/qonto-mcp-server"
+      }
     }
   }
 }
