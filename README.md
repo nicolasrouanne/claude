@@ -50,7 +50,7 @@ Custom slash commands available in Claude Code. The table below is auto-generate
 | [`/sentry-triage`](./.claude/skills/sentry-triage/SKILL.md) | Triage unresolved Sentry issues for any project. Analyze errors, identify root causes, prioritize by impact, and optionally apply fixes or update issue status. |
 | [`/tmba-process`](./.claude/skills/tmba-process/SKILL.md) | Process a "Tech My Breath Away" meeting: move the Fireflies-created Notion page to the Talks database, and upload the video to Google Drive. |
 | [`/toggl-calendar`](./.claude/skills/toggl-calendar/SKILL.md) | Per-day, per-client timesheet calendar from Toggl. Shows work days per client per day, in 0.5-day increments with carry-forward rounding. Can also clean anomalies (overnight timers, missing lunch breaks) and reassign unattributed entries to clients. |
-| [`/transcribe`](./.claude/skills/transcribe/SKILL.md) | Transcribe audio files using whisper-cpp (whisper-cli) with automatic format conversion. |
+| [`/transcribe`](./.claude/skills/transcribe/SKILL.md) | Transcribe audio files using the local `transcribe` CLI (WhisperX large-v3 + diarisation + optional LLM correction). |
 | [`/update-knowledge`](./.claude/skills/update-knowledge/SKILL.md) | Update .claude/knowledge/ files with architectural context and design rationale learned during the current session. |
 | [`/workspace`](./.claude/skills/workspace/SKILL.md) | Read open Cursor editor tabs to understand what the user is working on. |
 
