@@ -1,6 +1,6 @@
 ---
 name: transcribe
-description: Transcribe audio files using whisper-cpp (whisper-cli) with automatic format conversion.
+description: Transcribe audio files using the local `transcribe` CLI (WhisperX large-v3 + diarisation + optional LLM correction).
 title: /transcribe
 parent: Skills
 permalink: /skills/transcribe/
@@ -9,61 +9,61 @@ nav_order: 19
 
 # Transcribe Audio
 
-Transcribe audio files to text using whisper-cpp locally on your Mac.
+Delegate to the local `transcribe` CLI from `~/dev/personal/transcribe/` (symlinked into `~/.local/bin/`, so callable from anywhere). Do NOT call `whisper-cli` directly — the CLI uses a better model (WhisperX `large-v3`), adds speaker diarisation, EBU R128 normalisation, and resumable caching.
 
 ## Your Task
 
 Given an audio file path as argument:
 
-1. **Resolve the file path** — expand `~` and verify the file exists
-2. **Convert to WAV if needed** — if the file is not `.wav`, convert it using ffmpeg:
+1. **Resolve the file path** — expand `~` and verify the file exists.
+2. **Run `transcribe`**:
    ```bash
-   ffmpeg -i <input> -ar 16000 -ac 1 /tmp/whisper_transcribe_tmp.wav
+   transcribe <audio-file> [lang] [output-dir]
    ```
-3. **Run whisper-cli** to transcribe:
+   - `lang`: `fr` by default, `auto` to autodetect, or any whisper language code.
+   - `output-dir`: `.` by default. Pass an explicit directory if the user specifies one or if the audio is somewhere they don't want output files dropped.
+3. **Report where outputs landed** — `out/<safe>.txt`, `.srt`, `.json`, etc. The basename is sanitised (ASCII, lowercase, dashes, ≤60 chars).
+4. **Offer LLM correction** if the transcript looks rough or the user cares about accuracy:
    ```bash
-   whisper-cli -m /opt/homebrew/share/whisper-cpp/ggml-medium.bin -l <lang> -np <wav_file>
+   correct <out/...json> [model]
    ```
-   - Default language: `fr` (French)
-   - If the user specifies a language (e.g., `/transcribe file.opus en`), use that instead
-   - The `-np` flag suppresses debug output, showing only transcription results
-4. **Output the clean transcription** — present only the transcribed text to the user, stripping timestamps
-5. **Clean up** — if a temp WAV was created, delete `/tmp/whisper_transcribe_tmp.wav`
+   Default model is `mistral-nemo:12b`. Produces `<safe>.corrected.txt` and `<safe>.diff` next to the JSON.
 
 ## Guidelines
 
 **DO:**
-- Always check the file exists before processing
-- Convert non-WAV files (opus, mp3, ogg, m4a, flac, etc.) to WAV first
-- Use `-ar 16000 -ac 1` for WAV conversion (16kHz mono, optimal for Whisper)
-- Strip timestamps from output to give clean text
-- Redirect ffmpeg and whisper stderr to /dev/null for clean output
+- Always use the `transcribe` CLI, not raw `whisper-cli` or `ffmpeg + whisper-cpp` pipelines.
+- Trust the CLI's caching — re-running the same command resumes from the last completed stage, so it's safe to re-invoke.
+- Surface the output path so the user can open the files.
+- Suggest `correct` as a follow-up step, don't run it automatically (it's slow and uses Ollama).
 
 **DON'T:**
-- Don't try to pass non-WAV files directly to whisper-cli (it only reads WAV)
-- Don't leave temp files behind after transcription
-- Don't include whisper debug/timing output in the result
+- Don't reimplement the pipeline inline. If something's broken, fix it in `~/dev/personal/transcribe/`.
+- Don't pass non-WAV files through manual ffmpeg conversion — the CLI handles all input formats.
+- Don't worry about the medium-model whisper-cpp setup — it's been replaced.
 
 ## Input Handling
 
 - **Single argument**: audio file path (e.g., `/transcribe ~/Downloads/audio.opus`)
-- **With language**: file path + language code (e.g., `/transcribe ~/Downloads/audio.opus en`)
-- **No argument**: ask the user for the file path
+- **With language**: file path + language code (e.g., `/transcribe ~/Downloads/audio.m4a en`)
+- **With output dir**: file + lang + dir (e.g., `/transcribe ~/Downloads/audio.m4a fr ~/transcripts/`)
+- **No argument**: ask the user for the file path.
 
 ## Tools Used
 
-- **Bash**: for running ffmpeg (conversion) and whisper-cli (transcription)
+- **Bash**: `transcribe` and `correct` CLIs (in `~/.local/bin/`).
 
 ## Dependencies
 
-- `whisper-cpp` (installed via Homebrew, provides `whisper-cli`)
-- `ffmpeg` (installed via Homebrew, for audio format conversion)
-- Model file: `/opt/homebrew/share/whisper-cpp/ggml-medium.bin`
+Set up once per machine — see `~/dev/personal/transcribe/README.md` for full instructions:
+- `uv tool install whisperx`
+- Hugging Face token at `~/.config/whisperx/token` (for diarisation; delete the file to skip diarisation)
+- `brew install ollama`, `ollama pull mistral-nemo:12b` (only needed for `correct`)
 
 ## Example Usage
 
 ```
 /transcribe ~/Downloads/voice-message.opus
 /transcribe ~/Downloads/meeting.mp3 en
-/transcribe ~/Desktop/recording.wav
+/transcribe ~/Downloads/seance.m4a fr ~/transcripts/
 ```
