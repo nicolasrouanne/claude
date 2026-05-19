@@ -46,6 +46,7 @@ Custom slash commands available in Claude Code. The table below is auto-generate
 | [`/notion-article`](./.claude/skills/notion-article/SKILL.md) | Write and publish a blog article to Notion based on conversation context, a file, or a topic. Optionally cross-post to LinkedIn, Twitter, and Slack. |
 | [`/pr`](./.claude/skills/pr/SKILL.md) | Commit changes, create a branch, push, and open a pull request. If working from an issue, automatically links it with "Closes #X". |
 | [`/promote-permissions`](./.claude/skills/promote-permissions/SKILL.md) | Review ephemeral permissions in settings.local.json and promote approved ones to versioned settings.json, then create a PR |
+| [`/qonto-invoices`](./.claude/skills/qonto-invoices/SKILL.md) | Analyse des factures clients Qonto par période de prestation (pas date d'émission) et compte de destination. Sortie HT/TTC, top clients, audit des cas ambigus. |
 | [`/review-apply`](./.claude/skills/review-apply/SKILL.md) | Apply PR review feedback — reply to questions and implement requested changes. Usage: /review-apply [pr-url-or-number] |
 | [`/sentry-triage`](./.claude/skills/sentry-triage/SKILL.md) | Triage unresolved Sentry issues for any project. Analyze errors, identify root causes, prioritize by impact, and optionally apply fixes or update issue status. |
 | [`/tmba-process`](./.claude/skills/tmba-process/SKILL.md) | Process a "Tech My Breath Away" meeting: move the Fireflies-created Notion page to the Talks database, and upload the video to Google Drive. |
