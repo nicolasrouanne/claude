@@ -149,7 +149,13 @@
       "mcp__notion__notion-get-comments",
       "mcp__notion__notion-get-teams",
       "mcp__notion__notion-get-users",
+      "mcp__notion__API-retrieve-a-database",
+      "mcp__notion__API-query-data-source",
+      "mcp__notion__API-post-page",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.claude.ai)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:www.npmjs.com)",
       "Bash(node --version:*)",
       "Bash(npm view:*)",
       "Bash(gog gmail search:*)",
@@ -184,7 +190,13 @@
       "mcp__sentry__find_projects",
       "mcp__sentry__search_events",
       "mcp__sentry__search_issues",
-      "mcp__sentry__get_issue_details"
+      "mcp__sentry__get_issue_details",
+      "mcp__slack-qraft__users_search",
+      "mcp__slack-qraft__conversations_add_message",
+      "mcp__slack-episto__users_search",
+      "mcp__slack-episto__conversations_add_message",
+      "Read(~/.claude/knowledge/**)",
+      "Read(~/dev/claude/.claude/knowledge/**)"
     ]
   },
   "hooks": {
