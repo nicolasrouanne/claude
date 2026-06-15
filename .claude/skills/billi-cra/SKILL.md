@@ -27,7 +27,9 @@ If no direction is specified, ask the user.
 
 ## Auth
 
-1. Get credentials from 1Password: `op item get "Billi Qraft - Agency User" --vault Qraft --fields label=username,label=password`
+1. Get credentials from 1Password (item `chezmoi_billi` in the `AI Agents` vault):
+   - Email: `op item get chezmoi_billi --vault "AI Agents" --fields username --reveal`
+   - Password: `op read "op://AI Agents/chezmoi_billi/password"`
 2. Get a Bearer token:
 ```bash
 curl -s -X POST https://api.billi.so/oauth/token \
