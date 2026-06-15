@@ -22,7 +22,7 @@ Skill chapeau pour le suivi du temps de travail. Orchestre les 3 sources de donn
 ## Billi — Accès API
 
 - **App** : https://app.billi.so | **API** : https://api.billi.so
-- **Credentials** : 1Password, item "Billi Qraft - Agency User" dans vault Qraft
+- **Credentials** : 1Password, item `chezmoi_billi` dans le vault `AI Agents` (email via `op item get chezmoi_billi --vault "AI Agents" --fields username --reveal`, password via `op read "op://AI Agents/chezmoi_billi/password"`)
 - **Auth** : OAuth password grant (voir `/billi-cra` pour le détail auth)
 
 ### Récupérer les CRA via l'API
