@@ -36,6 +36,7 @@ Custom slash commands available in Claude Code. The table below is auto-generate
 | ----- | ----------- |
 | [`/billi-cra`](./.claude/skills/billi-cra/SKILL.md) | Import CRAs from an Excel file into Billi, or export CRAs from Billi to Excel. Bidirectional sync of activity reports. |
 | [`/cii`](./.claude/skills/cii/SKILL.md) | Dossier CII/CIR : accès Finalli, données de référence, extraction temps personnel pour les déclarations de crédit d'impôt innovation. |
+| [`/cloudflare-workers-nextjs`](./.claude/skills/cloudflare-workers-nextjs/SKILL.md) | Deploy a Next.js 16 app to Cloudflare Workers via OpenNext, with Workers Builds for automatic PR preview deployments. |
 | [`/cra`](./.claude/skills/cra/SKILL.md) | Suivi du temps : réconciliation Toggl, Billi CRA et git commits. Vue d'ensemble et détection d'écarts entre les sources. |
 | [`/create-skill`](./.claude/skills/create-skill/SKILL.md) | Create a new Claude Code skill based on conversation context, a file, or a description of the skill's purpose. |
 | [`/cross-post`](./.claude/skills/cross-post/SKILL.md) | Cross-post content to LinkedIn, Twitter/X, and Slack. Adapts content to each platform's format and constraints. |
