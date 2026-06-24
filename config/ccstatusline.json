@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "3",
+        "type": "session-usage",
+        "metadata": {
+          "display": "slider"
+        }
+      },
+      {
+        "id": "3r",
+        "type": "custom-text",
+        "color": "brightBlack",
+        "customText": " ↻ "
+      },
+      {
+        "id": "3t",
+        "type": "custom-command",
+        "color": "brightBlack",
+        "commandPath": "ts=$(jq -r '.rate_limits.five_hour.resets_at // empty'); [ -n \"$ts\" ] && TZ=Europe/Paris date -r \"$ts\" '+%-I:%M%p' | sed 's/AM/am/;s/PM/pm/'",
+        "timeout": 1000
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
+        "id": "5",
+        "type": "weekly-usage",
+        "metadata": {
+          "display": "slider"
+        }
+      },
+      {
+        "id": "5r",
+        "type": "custom-text",
+        "color": "brightBlack",
+        "customText": " ↻ "
+      },
+      {
+        "id": "5t",
+        "type": "custom-command",
+        "color": "brightBlack",
+        "commandPath": "ts=$(jq -r '.rate_limits.seven_day.resets_at // empty'); [ -n \"$ts\" ] && TZ=Europe/Paris date -r \"$ts\" '+%b %-d %-I:%M%p' | sed 's/AM/am/;s/PM/pm/'",
+        "timeout": 1000
+      },
+      {
+        "id": "6",
+        "type": "separator"
+      },
+      {
+        "id": "7",
+        "type": "context-percentage",
+        "color": "brightBlack"
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  }
+}
