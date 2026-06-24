@@ -211,5 +211,10 @@
       }
     ]
   },
-  "teammateMode": "tmux"
+  "teammateMode": "tmux",
+  "statusLine": {
+    "type": "command",
+    "command": "~/dev/claude/config/statusline.sh",
+    "padding": 0
+  }
 }
