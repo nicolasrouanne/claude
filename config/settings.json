@@ -214,7 +214,7 @@
   "teammateMode": "tmux",
   "statusLine": {
     "type": "command",
-    "command": "~/dev/claude/config/statusline.sh",
+    "command": "~/.nvm/versions/node/v22.19.0/bin/ccstatusline",
     "padding": 0
   }
 }
