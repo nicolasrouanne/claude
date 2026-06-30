@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.qraft.comms</string>
+
+  <!-- PoC path: the worktree runner (works before merge to main).
+       After merging the skill, repoint this to:
+       /Users/nicolasrouanne/dev/claude/.claude/skills/qraft-comms/schedule/run.sh -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/nicolasrouanne/dev/claude/.claude/worktrees/qraft-comms-skill/.claude/skills/qraft-comms/schedule/run.sh</string>
+  </array>
+
+  <!-- Daily: every day at 08:30 -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/nicolasrouanne/qraft-comms/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/nicolasrouanne/qraft-comms/launchd.err.log</string>
+
+  <!-- Don't fire on load; only on the daily schedule (or manual `launchctl start`). -->
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
