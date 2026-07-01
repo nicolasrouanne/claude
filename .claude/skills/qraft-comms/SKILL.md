@@ -23,17 +23,31 @@ Generate Qraft communication material: sense what shipped, propose **3 distinct 
 2. `~/dev/claude/.claude/knowledge/writing-style.md` — Nicolas's voice. The drafted post **must** follow it (esp. the long-form/Notion + Slack registers and the "avoid" list).
 3. **The last 3 digests** in `~/qraft-comms/drafts/` — so you don't repeat yourself. This runs daily; only surface what's **new** since the last run.
 
+> **Whose work gets posted.** Posts go out under **Nicolas's** name. So the signal that matters is what **Nicolas** personally contributed to or is aware of — not everything his teammates shipped. His git identity is `Nicolas Rouanne <nico.rouanne@gmail.com>` and GitHub handle `nicolasrouanne`. Prefer angles he can defend line by line; never draft a post about a teammate's PR he didn't touch or follow.
+
 ## Your Task
 
 ### 1. Sense recent Qraft activity (read-only)
 
-Gather signal over the period:
+Gather signal over the period from **four** sources, then cross-reference them. The unifying filter: **keep only what Nicolas contributed to or is aware of** (see the "Whose work gets posted" note above).
 
-- **Git activity** across Qraft repos. For each git repo under `~/dev` (notably `episto`, `billi`, `cevidentia`, `embarq`, `kado_brain`, `chutt`, `claude`), run:
-  `git -C <repo> log --since="<period>" --no-merges --pretty=format:'%s'`
-  and collect the notable, non-trivial subjects — shipped features, migrations, integrations, AI/agentic work. Skip chore/lint/bump noise.
-- **Notion "idées de post" DB.** Search the local Notion MCP (`mcp__notion__API-post-search`) for the post-ideas database (title contains "idées" / "post"). Pull any unprocessed idea rows. If you can't find it, note that and continue.
-- *(Optional)* Recent merged PRs via `gh pr list --state merged --search "merged:>=<date>"` for repos where `gh` is configured.
+**a. Git — filtered to Nicolas's contributions.** For each git repo under `~/dev` (notably `episto`, `billi`, `cevidentia`, `embarq`, `kado_brain`, `chutt`, `claude`):
+  - His own commits: `git -C <repo> log --since="<period>" --no-merges --author='nico.rouanne@gmail.com' --pretty=format:'%s'`
+  - PRs he authored or reviewed (where `gh` is configured): `gh pr list --state all --search "author:@me updated:>=<date>"` and `gh pr list --state merged --search "reviewed-by:@me merged:>=<date>"`.
+  - You **may** also scan the full team log for *context*, but only turn a teammate's work into an angle if Nicolas clearly followed it (reviewer, mentioned, or it shows up in his Notion/Claude activity). Skip chore/lint/bump noise.
+
+**b. Notion — pages Nicolas edited himself.** Via the local Notion MCP, `mcp__notion__API-post-search` with an empty query sorted by `last_edited_time` descending. Keep pages edited within the period whose content he authored (technical write-ups, strategy notes, blog drafts). Also pull the **"idées de post" DB** (title contains "idées" / "post") for any unprocessed idea rows. If a search result is too large, it's saved to a file — parse it for `title` + `last_edited_time`. If you can't find something, note it and continue.
+
+**c. Claude Code conversations — what Nicolas actually drove this week.** List recent session transcripts: `find ~/.claude/projects -maxdepth 2 -name '*.jsonl' -mtime -<days>` (skip `subagents/` and `wf_*`), then extract the first user prompt of each (`grep -m1 '"type":"user"'` + parse the JSON `message.content`). These reveal Qraft themes invisible in git — research he ran, docs he asked for, initiatives he's shaping.
+
+**d.** *(Optional)* Recent merged team PRs via `gh pr list --state merged --search "merged:>=<date>"` — for background context only, per the filter above.
+
+**Exclusions — never turn these into a post:**
+- **Client-confidential**: contract/MSA negotiations, pricing, meeting prep, staff evaluations (e.g. Edgescale, ARRC, Chutt cadrage, semiannual dev reviews).
+- **Litigation-private**: anything SAMM (see the litigation memories) — never public, ever.
+- **Personal**: Nicolas's non-Qraft life (property, notaires, cars, personal knowledge base).
+
+When you write the digest's *Activité sensée*, list an **Écarté** line naming what you dropped and why (teammate-only / confidential / private), so the filtering is auditable.
 
 ### 2. Propose 3 distinct angles
 
@@ -63,7 +77,8 @@ Write to `~/qraft-comms/drafts/<YYYY-MM-DD>.md` (create the dir if needed):
 # Qraft Comms — <date>
 
 ## Activité sensée
-<bullets: what shipped / ideas pulled, each with its source>
+<bullets grouped by source (git / Notion / Claude convs), each with its source>
+Écarté : <teammate-only / confidential / private items dropped, and why>
 
 ## 3 angles
 1. <hook> — <platform> — <rationale> — source: <...>
@@ -80,9 +95,9 @@ Write to `~/qraft-comms/drafts/<YYYY-MM-DD>.md` (create the dir if needed):
 
 Then print a 3-line summary to stdout (so the scheduled runner captures it in the log).
 
-### 5. (Optional) Notify Slack
+### 5. (Optional) Notify Slack — DM Nicolas
 
-If a `#nico-agents` channel exists in the `slack-qraft` workspace, post a 3-line summary + the digest file path there (`mcp__slack-qraft__conversations_add_message`). This is the "control away from your computer" hook. If the channel or tool isn't available, skip silently — never create the channel automatically.
+Send a 3-line summary + the digest file path to Nicolas as a **Slack DM** in the `slack-qraft` workspace (`mcp__slack-qraft__conversations_add_message`). Resolve his DM channel with `mcp__slack-qraft__users_search` ("Nicolas Rouanne" → `DMChannelID`). This is the "control away from your computer" hook. If a dedicated `#nico-agents` channel exists, you may post there instead. Never create a channel automatically; if Slack isn't available, skip silently.
 
 ## Hard constraints
 
