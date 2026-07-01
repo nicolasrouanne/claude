@@ -40,6 +40,41 @@ curl -s https://api.billi.so/activity_reports \
 # Returns activity_reports with: id, month, state, duration, mission, company, freelancer, activities
 ```
 
+## Billi — Missions internes « Qraft — Interne » (non facturable)
+
+Le temps sans client facturable (interne Qraft) est tracké dans un client Billi dédié **`Qraft — Interne`** (company id `605`, agency `1`, tarif **0 €**, freelancer Nicolas = `166`). 4 missions stables, reproductibles chaque mois :
+
+| Mission | mission_id | rate_id | Contenu |
+|---|---|---|---|
+| Prospection | 304 | 297 | commercial, business dev, propositions |
+| Opérations | 301 | 294 | RH, compta, admin, direction, veille |
+| R&D / Innovation | 302 | 295 | recherche, POCs, tooling agentic (assiette CII) |
+| Contentieux | 303 | 296 | litiges / contentieux |
+
+### Mapping projet Toggl → mission interne (reproductible chaque mois)
+
+| Projet Toggl (id) | → Mission |
+|---|---|
+| Prospection (159925478), Qraft › Prospection (217285296) | **Prospection** |
+| Qraft (164497337), Administratif (190333392), Recrutement (195772172), Qraft › RH (217285294), Facturation (217285293), Veille & Research (217285295), Site coworking (212320887) | **Opérations** |
+| Startup Studio › Car TCO (216891628), Qraft › Agentic Engineering (216891883) | **R&D / Innovation** |
+| Projets « Contentieux » / « Organisation » du client en litige (IDs en config privée) | **Contentieux** |
+
+**Exclure** (jamais dans un CRA interne) : projets clients facturables et le perso (Perso 149821005, Immobilier, Bruno, Administratif Gybe).
+
+### Remplir un CRA interne (mensuel)
+1. Agréger le temps brut Toggl par mission via le mapping ci-dessus.
+2. Appliquer l'arrondi carry-forward (voir `/toggl-calendar`) **avec plafond 1,0 j/jour** — Billi refuse toute durée hors `{0, 0.5, 1.0}`.
+3. `POST /activity_reports {"format":"billi","month":"YYYY-MM-01T00:00:00.000Z","mission_id":<id>}` puis `PUT /activity_reports/<cra_id> {"activities_attributes":[{date,duration,mission_rate_id}]}`.
+
+## Règles de classement (facturable vs interne)
+
+- **CRA client = uniquement le facturable.** Ne jamais facturer à un client du temps qui ne lui revient pas.
+- **Contentieux** : jamais facturé au client adverse → `Qraft — Interne › Contentieux`.
+- **R&D / agentic engineering** : → `R&D / Innovation`, assiette **CII** (voir `/cii`), pas un CRA client.
+- **Un jour déjà déclaré dans un CRA Billi = vérité** (tu as travaillé, même si Toggl l'a raté) : garder les jours déclarés, compléter les jours non déclarés au prorata Toggl — **ne jamais supprimer un jour déclaré**.
+- **Nettoyer Toggl avant de figer** : timers oubliés (>10h), pauses déj, entrées « Sans client » à réattribuer au bon projet (voir `/toggl-calendar`).
+
 ## Git commits — Extraction jours travaillés
 
 Pour les collaborateurs qui n'ont pas Toggl, les commits git servent de proxy :
