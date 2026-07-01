@@ -1,72 +1,72 @@
 ---
 name: notion-pdf
-description: "Rendre une page Notion (proposition commerciale, doc client) en PDF à l'en-tête Qraft, fidèle au contenu Notion. Conversion markdown Notion → HTML charté → PDF via Chrome headless."
+description: "Render a Notion page (commercial proposal, client doc) as a Qraft-branded PDF, faithful to the Notion content. Notion markdown -> styled HTML -> PDF via headless Chrome."
 title: /notion-pdf
 parent: Skills
 permalink: /skills/notion-pdf/
 nav_order: 33
 ---
 
-# notion-pdf — Page Notion → PDF charté Qraft
+# notion-pdf — Notion page → Qraft-branded PDF
 
-Rend une page Notion en PDF avec l'en-tête et la charte Qraft, **fidèle au
-contenu** : rien n'est réécrit, condensé ni supprimé. Seuls l'en-tête (papier à
-en-tête) et la mise en forme visuelle sont ajoutés.
+Renders a Notion page as a PDF with the Qraft letterhead and house style,
+**faithful to the content**: nothing is rewritten, condensed, or dropped. Only
+the letterhead and visual styling are added.
 
-Sert à produire des pièces jointes propres (propositions commerciales, docs
-client) quand le mail lie aussi la page Notion : le PDF et le lien doivent
-montrer **exactement le même contenu**.
+Use it to produce clean attachments (commercial proposals, client docs) when the
+email also links the Notion page: the PDF and the link must show the **exact
+same content**.
 
-## Fichiers
+## Files
 
-| Fichier | Rôle |
+| File | Role |
 |---|---|
-| `assets/style.css` | La charte Qraft (typo, en-tête, callouts, tableaux, colonnes). **Source de vérité de la mise en forme.** |
-| `scripts/notion_md_to_pdf.py` | Convertisseur : markdown Notion → HTML charté → PDF. Pure stdlib Python. |
+| `assets/style.css` | The Qraft house style (typography, letterhead, callouts, tables, columns). **Source of truth for the formatting.** |
+| `scripts/notion_md_to_pdf.py` | Converter: Notion markdown → styled HTML → PDF. Pure stdlib Python. |
 
 ## Workflow
 
-1. **Récupérer le markdown** de la page Notion :
-   `mcp__notion__API-retrieve-page-markdown` avec le `page_id`.
-2. **Récupérer le titre exact** de la page (`API-retrieve-a-page`,
-   `filter_properties=title`) → il devient le `<h1>`.
-3. **Résoudre les mentions** : remplacer chaque
-   `<mention-page url="..."/>` par un lien markdown `[Titre de la page](url)`
-   (récupérer le titre de la page liée). Sinon le script met un lien générique.
-4. **Sauver le markdown** dans un fichier `.md` (scratchpad).
-5. **Générer** :
+1. **Fetch the page markdown**: `mcp__notion__API-retrieve-page-markdown` with
+   the `page_id`.
+2. **Fetch the exact title** (`API-retrieve-a-page`, `filter_properties=title`)
+   → it becomes the `<h1>`.
+3. **Resolve mentions**: replace each `<mention-page url="..."/>` with a markdown
+   link `[Page title](url)` (fetch the linked page's title). Otherwise the
+   script emits a generic link.
+4. **Save the markdown** to a `.md` file (scratchpad).
+5. **Render**:
    ```bash
    uv run python scripts/notion_md_to_pdf.py INPUT.md OUTPUT.pdf \
-     --title "Titre exact de la page Notion" \
+     --title "Exact Notion page title" \
      --header-right "Proposition commerciale - Juin 2026"
    ```
-   Ajouter `--html-only` pour inspecter le HTML sans produire de PDF.
+   Add `--html-only` to inspect the HTML without producing a PDF.
 
-## Règles de fidélité (important)
+## Fidelity rules (important)
 
-- **Aucune modification de contenu.** On rend le markdown tel quel : mêmes
-  puces, mêmes chiffres, même ordre, mêmes libellés. Pas de sous-titre inventé,
-  pas de condensation, pas d'ajout/retrait de participants.
-- L'en-tête `QRAFT · <header-right>` et le `<h1>` (titre de page) sont les
-  **seuls** éléments ajoutés — c'est le papier à en-tête, pas du contenu.
-- Les séparateurs Notion (`---`) sont ignorés (les titres portent déjà une
-  bordure). Aucun texte n'est perdu.
-- Vérifier après coup que les montants/efforts du PDF sont identiques à Notion.
+- **No content changes.** Render the markdown as-is: same bullets, same figures,
+  same order, same wording. No invented subtitle, no condensing, no
+  adding/removing participants.
+- The `QRAFT · <header-right>` letterhead and the `<h1>` (page title) are the
+  **only** added elements — that is the letterhead, not content.
+- Notion dividers (`---`) are skipped (headings already carry a border). No text
+  is lost.
+- After rendering, check that amounts/efforts in the PDF match Notion exactly.
 
-## Mapping de mise en forme
+## Formatting mapping
 
-- Titres Notion : `#` → `<h2>`, `##` → `<h3>`, `###` → `<h4>` (le `<h1>` est le
-  titre de page).
-- Callouts : `blue_bg`/`yellow_bg`/`gray_bg`/`orange_bg` → `.callout.blue` etc.
-  Les icônes emoji sont gardées ; les placeholders Notion à une lettre/chiffre
-  (`r`, `t`, `1`…) sont ignorés.
-- Tableaux : 1ʳᵉ ligne → en-tête (`<th>`, fond bleu) ; ligne `yellow_bg` →
-  `tr.total` (jaune) ; ligne `blue_bg` → `tr.subtotal` (bleu). Largeurs de
-  colonnes (`<colgroup>`) préservées.
-- Colonnes Notion (`<columns>`) → `.cols` (flex).
+- Notion headings: `#` → `<h2>`, `##` → `<h3>`, `###` → `<h4>` (the `<h1>` is the
+  page title).
+- Callouts: `blue_bg`/`yellow_bg`/`gray_bg`/`orange_bg` → `.callout.blue` etc.
+  Emoji icons are kept; single letter/digit Notion placeholders (`r`, `t`, `1`…)
+  are dropped.
+- Tables: first row → header (`<th>`, blue background); `yellow_bg` row →
+  `tr.total` (yellow); `blue_bg` row → `tr.subtotal` (blue). Column widths
+  (`<colgroup>`) are preserved.
+- Notion columns (`<columns>`) → `.cols` (flex).
 
-## Prérequis
+## Requirements
 
-- **Chrome/Chromium** installé (macOS : Google Chrome par défaut). Le script
-  détecte le binaire ; adapter `CHROME_CANDIDATES` sinon.
-- Aucune dépendance Python (stdlib uniquement).
+- **Chrome/Chromium** installed (macOS: Google Chrome by default). The script
+  auto-detects the binary; edit `CHROME_CANDIDATES` otherwise.
+- No Python dependencies (stdlib only).
